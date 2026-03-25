@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller PALE · El Caso de Emilio · Suma y Resta 1°</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Inconsolata:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN SYSTEM
+   Estética: Tinta sobre papel verjurado · Editorial cálido
+   Paleta: Noche profunda · Índigo · Terracota · Vainilla
+═══════════════════════════════════════════════════════ */
+:root {
+  /* Papel */
+  --papel:        #FDFAF3;
+  --papel-warm:   #FFF8EC;
+  --papel-frio:   #F4F7FA;
+  --vainilla:     #F0E8D0;
+  --vainilla-med: #E2D4B0;
+
+  /* Tinta */
+  --noche:        #12151C;
+  --tinta:        #1E2530;
+  --tinta-med:    #3A4455;
+  --tinta-lite:   #6B7A90;
+  --tinta-palo:   #A8B4C4;
+
+  /* Accentos */
+  --indigo:       #2E4A8C;
+  --indigo-med:   #4A6DB5;
+  --indigo-pale:  #E8EEF9;
+  --indigo-mist:  #F0F4FB;
+
+  --terra:        #C04E2A;
+  --terra-med:    #D9704E;
+  --terra-pale:   #FBF0EB;
+  --terra-warm:   #F5E0D8;
+
+  --verde:        #2D6B50;
+  --verde-med:    #4A9470;
+  --verde-pale:   #E8F4EE;
+
+  --ambar:        #C47C10;
+  --ambar-pale:   #FDF5E0;
+
+  --violeta:      #5B2D8C;
+  --violeta-pale: #F0E8FB;
+
+  /* Estructura */
+  --linea:        #DDD5C0;
+  --linea-med:    #C8BEA8;
+  --sombra:       rgba(18,21,28,0.08);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #2A2E38;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: var(--tinta);
+  font-size: 9.8pt;
+  line-height: 1.65;
+}
+
+/* ─── PAGE ─── */
+.page {
+  width: 210mm;
+  background: var(--papel);
+  margin: 0 auto 18px;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+.page:last-child { page-break-after: auto; }
+
+.page-inner {
+  padding: 14mm 16mm 13mm 15mm;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ─── PORTADA ─── */
+.cover {
+  background: var(--noche);
+  min-height: 297mm;
+}
+.cover .page-inner { padding: 0; }
+
+/* Textura de papel oscuro */
+.cover-texture {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(255,255,255,0.015) 28px,
+      rgba(255,255,255,0.015) 29px
+    );
+  pointer-events: none;
+}
+
+.cover-top-stripe {
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--terra) 0%,
+    var(--ambar) 35%,
+    var(--indigo) 70%,
+    var(--verde) 100%
+  );
+}
+
+.cover-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18mm 20mm 16mm;
+  position: relative;
+  z-index: 2;
+}
+
+.cover-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.stamp-box {
+  border: 1.5px solid rgba(255,255,255,0.15);
+  padding: 3px 10px;
+  font-family: 'Inconsolata', monospace;
+  font-size: 7pt;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.stamp-dot { width:5px; height:5px; border-radius:50%; background:var(--terra); }
+
+.cover-eyebrow {
+  font-family: 'Inconsolata', monospace;
+  font-size: 7.5pt;
+  color: var(--terra-med);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.cover-main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 52pt;
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--papel);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.cover-main-title .t-terra { color: var(--terra-med); }
+.cover-main-title .t-indigo { color: var(--indigo-med); }
+
+.cover-and {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 24pt;
+  color: rgba(255,255,255,0.2);
+  margin: 2px 0;
+  display: block;
+}
+
+.cover-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 11pt;
+  color: rgba(240,232,208,0.55);
+  margin-top: 14px;
+  letter-spacing: 0.04em;
+}
+
+.cover-story-intro {
+  margin-top: 24px;
+  border-left: 2px solid var(--terra);
+  padding-left: 14px;
+  max-width: 380px;
+}
+.cover-story-intro p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10pt;
+  color: rgba(240,232,208,0.7);
+  line-height: 1.7;
+}
+.cover-story-intro .story-attr {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6.5pt;
+  color: var(--terra-med);
+  letter-spacing: 0.15em;
+  margin-top: 6px;
+  display: block;
+}
+
+/* COVER STATS */
+.cover-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  margin-top: 24px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.cover-stat {
+  padding: 12px 10px;
+  background: rgba(255,255,255,0.03);
+  text-align: center;
+}
+.cs-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 20pt;
+  font-weight: 700;
+  color: var(--vainilla);
+  display: block;
+  line-height: 1;
+}
+.cs-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6pt;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 3px;
+  display: block;
+}
+
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cover-meta {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6.5pt;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+.cover-badge {
+  width: 54px; height: 54px;
+  border: 2px solid rgba(255,255,255,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cover-badge span {
+  font-family: 'Playfair Display', serif;
+  font-size: 13pt;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  line-height: 1;
+}
+.cover-badge small {
+  font-family: 'Inconsolata', monospace;
+  font-size: 5pt;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ─── INNER PAGE HEADER ─── */
+.page-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--noche);
+  padding-bottom: 7px;
+  margin-bottom: 15px;
+}
+.pb-left {
+  font-family: 'Lato', sans-serif;
+  font-size: 6.5pt;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tinta-lite);
+}
+.pb-right {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6.5pt;
+  color: var(--tinta-palo);
+  letter-spacing: 0.08em;
+}
+
+/* ─── SECTION HEADERS ─── */
+.sh {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  align-items: baseline;
+  gap: 8px;
+  margin: 16px 0 9px;
+}
+.sh-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 24pt;
+  font-weight: 400;
+  color: var(--linea-med);
+  text-align: right;
+  line-height: 1;
+}
+.sh-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 12.5pt;
+  font-weight: 700;
+  color: var(--tinta);
+  border-bottom: 2px solid var(--terra);
+  padding-bottom: 2px;
+  line-height: 1.2;
+}
+.sh-title.ind { border-bottom-color: var(--indigo); }
+.sh-title.vrd { border-bottom-color: var(--verde); }
+.sh-title.amb { border-bottom-color: var(--ambar); }
+.sh-title.vio { border-bottom-color: var(--violeta); }
+.sh-time {
+  font-family: 'Inconsolata', monospace;
+  font-size: 7pt;
+  background: var(--noche);
+  color: var(--vainilla);
+  padding: 2px 8px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+/* ─── STORY BOX ─── */
+.story {
+  background: var(--noche);
+  color: var(--papel);
+  padding: 13px 16px;
+  margin: 8px 0;
+  position: relative;
+  overflow: hidden;
+}
+.story::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--terra);
+}
+.story-part {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6.5pt;
+  color: var(--terra-med);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.story-part::after {
+  content:'';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+.story-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 11pt;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--vainilla);
+  margin-bottom: 7px;
+}
+.story p {
+  font-size: 9.5pt;
+  color: rgba(253,250,243,0.78);
+  line-height: 1.7;
+  margin-bottom: 5px;
+}
+.story em {
+  color: var(--terra-med);
+  font-style: italic;
+}
+.story strong {
+  color: var(--vainilla);
+}
+.story-reflection {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9pt;
+  color: rgba(253,250,243,0.55);
+}
+
+/* ─── FACILITATOR BOX ─── */
+.faci {
+  background: var(--indigo-mist);
+  border-left: 3px solid var(--indigo);
+  padding: 9px 13px;
+  margin: 7px 0;
+  position: relative;
+}
+.faci-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6pt;
+  color: var(--indigo-med);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.faci p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9.5pt;
+  color: var(--tinta-med);
+  line-height: 1.65;
+}
+.faci em { color: var(--indigo); font-style: normal; font-weight: 700; }
+
+/* ─── ACTIVITY CARD ─── */
+.act {
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--terra);
+  background: var(--papel-warm);
+  padding: 10px 13px;
+  margin: 7px 0;
+}
+.act.ind-top { border-top-color: var(--indigo); }
+.act.vrd-top { border-top-color: var(--verde); }
+.act.amb-top { border-top-color: var(--ambar); }
+.act.vio-top { border-top-color: var(--violeta); }
+.act.dark {
+  background: var(--noche);
+  border: none;
+  border-left: 4px solid var(--ambar);
+}
+
+.act-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6pt;
+  color: var(--tinta-palo);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.act-tag.light { color: rgba(255,255,255,0.3); }
+
+.act-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--tinta);
+  margin-bottom: 7px;
+}
+.act-title.light { color: var(--vainilla); }
+
+.act p { font-size: 9.3pt; color: var(--tinta-med); margin-bottom: 4px; line-height: 1.6; }
+.act.dark p { color: rgba(253,250,243,0.75); }
+.act ul, .act ol { padding-left: 16px; margin: 4px 0; }
+.act li { font-size: 9pt; color: var(--tinta-med); margin-bottom: 3px; line-height: 1.55; }
+.act.dark li { color: rgba(253,250,243,0.72); }
+.act li strong { color: var(--tinta); }
+.act.dark li strong { color: var(--vainilla); }
+
+/* ─── STEP LIST ─── */
+.steps { list-style: none; padding: 0; margin: 6px 0; }
+.steps li {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+.sn {
+  min-width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--noche);
+  color: var(--papel);
+  font-family: 'Inconsolata', monospace;
+  font-size: 7.5pt;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.sn.terra { background: var(--terra); }
+.sn.ind   { background: var(--indigo); }
+.sn.vrd   { background: var(--verde); }
+.sn.amb   { background: var(--ambar); color: var(--noche); }
+.sn.vio   { background: var(--violeta); }
+
+.steps .st { font-size: 9.2pt; color: var(--tinta-med); line-height: 1.55; }
+.steps .st strong { color: var(--tinta); }
+
+/* ─── THEORY CAPSULE ─── */
+.theory {
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  gap: 0;
+  margin: 6px 0;
+  background: var(--indigo-pale);
+  border-radius: 0;
+}
+.theory-bar { background: var(--indigo); }
+.theory-body { padding: 8px 12px; }
+.theory-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6pt;
+  color: var(--indigo-med);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.theory-body p, .theory-body li {
+  font-size: 8.8pt;
+  color: var(--indigo);
+  line-height: 1.55;
+}
+.theory-body ul { padding-left: 14px; margin-top: 3px; }
+.theory-body li { margin-bottom: 2px; }
+.theory-body strong { font-weight: 700; }
+
+/* ─── PEDA BOX ─── */
+.peda {
+  background: var(--verde-pale);
+  border-right: 3px solid var(--verde);
+  padding: 8px 12px;
+  margin: 6px 0;
+  text-align: left;
+}
+.peda-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6pt;
+  color: var(--verde);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.peda p, .peda li { font-size: 8.8pt; color: var(--verde); line-height: 1.55; }
+.peda ul { padding-left: 14px; margin-top: 3px; }
+.peda li { margin-bottom: 2px; }
+
+/* ─── MATH DEMO ─── */
+.math-demo {
+  background: var(--noche);
+  font-family: 'Inconsolata', monospace;
+  font-size: 9.5pt;
+  color: rgba(253,250,243,0.8);
+  padding: 11px 15px;
+  margin: 7px 0;
+  line-height: 2;
+}
+.md-label {
+  font-size: 6.5pt;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+.md-hi    { color: var(--ambar); }
+.md-res   { color: var(--terra-med); font-weight: 600; }
+.md-note  { color: rgba(255,255,255,0.35); font-size: 8pt; }
+.md-rule  { border-top: 1px solid rgba(255,255,255,0.1); margin: 4px 0; display: block; }
+
+/* ─── TWO / THREE COL ─── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 6px 0; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 6px 0; }
+
+.cell {
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--terra);
+  padding: 9px 11px;
+  background: var(--papel-warm);
+}
+.cell.ind { border-top-color: var(--indigo); }
+.cell.vrd { border-top-color: var(--verde); }
+.cell.amb { border-top-color: var(--ambar); }
+.cell.vio { border-top-color: var(--violeta); }
+.cell.dark-cell {
+  background: var(--noche);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: 3px solid var(--terra);
+}
+
+.cell-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 8.5pt;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1.2;
+}
+.cell.dark-cell .cell-title { color: var(--vainilla); }
+.cell p, .cell li { font-size: 8.5pt; color: var(--tinta-med); line-height: 1.5; }
+.cell.dark-cell p, .cell.dark-cell li { color: rgba(253,250,243,0.68); }
+.cell ul, .cell ol { padding-left: 14px; margin-top: 3px; }
+.cell li { margin-bottom: 2px; }
+.cell li strong { color: var(--tinta); font-weight: 700; }
+.cell.dark-cell li strong { color: var(--papel); }
+
+/* ─── AGENDA TABLE ─── */
+.agenda {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.8pt;
+  margin: 7px 0;
+}
+.agenda thead tr { background: var(--noche); color: var(--papel); }
+.agenda thead th {
+  padding: 7px 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.agenda thead th:first-child { width: 66px; }
+.agenda thead th:last-child  { width: 50px; text-align: center; }
+.agenda tbody tr:nth-child(even) { background: var(--papel-warm); }
+.agenda tbody tr:nth-child(odd)  { background: var(--papel); }
+.agenda tbody td {
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--linea);
+  vertical-align: top;
+}
+.agenda td:first-child {
+  font-family: 'Inconsolata', monospace;
+  font-size: 7.5pt;
+  color: var(--terra);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.agenda td:last-child {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--tinta-lite);
+  white-space: nowrap;
+}
+.ag-t { font-weight: 700; color: var(--tinta); display: block; font-size: 9pt; }
+.ag-d { font-size: 8pt; color: var(--tinta-lite); }
+.fase {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 6pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  color: white;
+  margin-bottom: 1px;
+}
+.fase.i  { background: var(--indigo); }
+.fase.d  { background: var(--terra); }
+.fase.c  { background: var(--verde); }
+
+/* ─── ERROR TABLE ─── */
+.etab {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+  margin: 7px 0;
+}
+.etab thead tr { background: var(--terra); color: white; }
+.etab thead th {
+  padding: 6px 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.etab tbody tr:nth-child(even) { background: var(--terra-pale); }
+.etab tbody tr:nth-child(odd)  { background: var(--papel-warm); }
+.etab td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--linea);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--tinta-med);
+}
+.etab td:first-child { font-weight: 700; color: var(--terra); font-size: 9pt; }
+.etab td:last-child  { color: var(--verde); font-weight: 600; }
+
+/* ─── HIGHLIGHT QUOTE ─── */
+.hq {
+  border-left: 4px solid var(--terra);
+  padding: 9px 14px;
+  margin: 8px 0;
+  background: var(--terra-pale);
+}
+.hq p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10.5pt;
+  color: var(--tinta-med);
+  line-height: 1.65;
+}
+.hq .attr {
+  font-family: 'Inconsolata', monospace;
+  font-size: 7pt;
+  color: var(--terra);
+  letter-spacing: 0.1em;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ─── RUBRIC ─── */
+.rubric {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.3pt;
+  margin: 7px 0;
+}
+.rubric thead tr { background: var(--indigo); color: white; }
+.rubric thead th {
+  padding: 6px 9px;
+  font-family: 'Lato', sans-serif;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.rubric thead th:first-child { text-align: left; }
+.rubric tbody tr:nth-child(even) { background: var(--indigo-pale); }
+.rubric tbody tr:nth-child(odd)  { background: var(--papel); }
+.rubric td {
+  padding: 5px 9px;
+  border: 1px solid var(--linea);
+  vertical-align: top;
+  text-align: center;
+  color: var(--tinta-med);
+  line-height: 1.45;
+}
+.rubric td:first-child { text-align: left; font-weight: 600; color: var(--tinta); }
+.circle-opt { font-size: 13pt; color: var(--linea-med); }
+
+/* ─── CARTA TEMPLATE ─── */
+.carta {
+  border: 1.5px solid var(--linea-med);
+  padding: 14px 18px;
+  background: var(--papel-warm);
+  position: relative;
+  margin: 8px 0;
+}
+.carta::before {
+  content: '✉';
+  position: absolute;
+  top: 10px; right: 14px;
+  font-size: 14pt;
+  color: var(--linea);
+}
+.carta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 10pt;
+  font-style: italic;
+  color: var(--tinta-lite);
+  margin-bottom: 10px;
+}
+.carta-line {
+  border-bottom: 1px solid var(--linea);
+  height: 22px;
+  margin-bottom: 6px;
+}
+.carta-commit {
+  border: 1.5px dashed var(--linea-med);
+  padding: 8px 12px;
+  margin-top: 8px;
+  background: white;
+  min-height: 38px;
+}
+.carta-commit-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6.5pt;
+  color: var(--tinta-palo);
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+/* ─── CLOSING BLOCK ─── */
+.closing {
+  background: var(--noche);
+  padding: 16px 20px;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.closing::after {
+  content: '∑';
+  font-family: 'Playfair Display', serif;
+  font-size: 130pt;
+  color: rgba(255,255,255,0.025);
+  position: absolute;
+  bottom: -28px; right: 8px;
+  line-height: 1;
+}
+.closing-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6.5pt;
+  color: var(--terra-med);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.closing-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15pt;
+  font-weight: 700;
+  color: var(--vainilla);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.closing p {
+  font-size: 9.5pt;
+  color: rgba(253,250,243,0.75);
+  line-height: 1.7;
+  margin-bottom: 6px;
+  max-width: 470px;
+}
+.closing p strong { color: var(--vainilla); }
+.closing-q {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 5px 0;
+}
+.cq-n {
+  font-family: 'Inconsolata', monospace;
+  font-size: 8pt;
+  color: var(--terra-med);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+.cq-t { font-size: 9.5pt; color: rgba(253,250,243,0.75); line-height: 1.55; }
+
+/* ─── SIGN BLOCKS ─── */
+.signs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.sign-b { text-align: center; }
+.sign-line { border-bottom: 1.5px solid var(--tinta-med); height: 30px; }
+.sign-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6pt;
+  color: var(--tinta-lite);
+  margin-top: 4px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── MATERIALS PILLS ─── */
+.pills { display: flex; flex-wrap: wrap; gap: 4px; margin: 5px 0; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--noche);
+  color: var(--papel);
+  font-family: 'Inconsolata', monospace;
+  font-size: 7.5pt;
+  padding: 2px 9px;
+  letter-spacing: 0.04em;
+}
+.pill .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--terra-med); flex-shrink: 0; }
+
+/* ─── PAGE FOOTER ─── */
+.pfoot {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--linea);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pf-l {
+  font-family: 'Inconsolata', monospace;
+  font-size: 6pt;
+  color: var(--tinta-palo);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pf-r {
+  font-family: 'Playfair Display', serif;
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--linea-med);
+}
+
+/* ─── UTILS ─── */
+.div  { border: none; border-top: 1px solid var(--linea); margin: 11px 0; }
+.divH { border-color: var(--linea-med); margin: 13px 0; }
+.sn-note { font-size: 8pt; color: var(--tinta-lite); font-style: italic; }
+.t-terra { color: var(--terra); }
+.t-ind   { color: var(--indigo); }
+.t-vrd   { color: var(--verde); }
+.code-inline {
+  font-family: 'Inconsolata', monospace;
+  font-size: 8.5pt;
+  background: var(--noche);
+  color: var(--ambar);
+  padding: 1px 6px;
+  vertical-align: middle;
+}
+
+/* ─── SCREEN / PRINT ─── */
+@media screen {
+  body { padding: 20px 0 40px; }
+  .page { box-shadow: 0 6px 40px rgba(0,0,0,0.35); }
+}
+@media print {
+  body { background: white; padding: 0; }
+  .page { margin: 0; width: 100%; box-shadow: none; }
+}
+@page { size: A4; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 1 · PORTADA
+══════════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top-stripe"></div>
+  <div class="cover-texture"></div>
+  <div class="cover-content" style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:16mm 20mm 16mm;">
+
+    <div>
+      <div class="cover-stamp">
+        <div class="stamp-dot"></div>
+        <div class="stamp-box">Curso-Taller · PALE · Pensamiento Matemático</div>
+        <div class="stamp-dot"></div>
+      </div>
+      <div class="cover-eyebrow">Planeación Completa · Docentes de Primaria · NEM 2025–2026</div>
+
+      <div class="cover-main-title">
+        <span class="t-terra">SUMA</span>
+        <span class="cover-and">&amp;</span>
+        <span class="t-indigo">RESTA</span>
+      </div>
+      <div style="font-family:'Playfair Display',serif;font-size:14pt;font-weight:400;font-style:italic;color:rgba(240,232,208,0.45);margin-top:6px;letter-spacing:0.05em;">
+        en Primer Grado · Un Taller que Transforma
+      </div>
+
+      <div class="cover-story-intro" style="margin-top:26px;">
+        <p>Esta es la historia de Emilio. Tiene seis años, se sienta en la tercera fila y lleva tres meses diciéndose a sí mismo que no sabe matemáticas. Hoy vamos a cambiar eso — pero primero tenemos que cambiar algo en nosotros.</p>
+        <span class="story-attr">— Historia hilo conductor del taller</span>
+      </div>
+
+      <div class="cover-grid" style="margin-top:22px;">
+        <div class="cover-stat"><span class="cs-num">4–5</span><span class="cs-label">Horas</span></div>
+        <div class="cover-stat"><span class="cs-num">14</span><span class="cs-label">Bloques</span></div>
+        <div class="cover-stat"><span class="cs-num">10</span><span class="cs-label">Actividades</span></div>
+        <div class="cover-stat"><span class="cs-num">3</span><span class="cs-label">Actos / Historia</span></div>
+      </div>
+    </div>
+
+    <div class="cover-bottom" style="margin-top:20px;">
+      <div class="cover-meta">
+        Nivel: Educación Primaria · 1° Grado<br>
+        Enfoque: PALE — Pensamiento Matemático · NEM<br>
+        Facilitador: IVÁN HERRERA DE LUNA<br>
+        Fecha y lugar: 25 MARZO 2026 - OJOCALIENTE, ZAC.
+      </div>
+      <div class="cover-badge">
+        <span>1°</span>
+        <small>PALE</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 2 · PROPÓSITO · APRENDIZAJES · AGENDA
+══════════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-band">
+    <div class="pb-left">Taller PALE · Suma y Resta · 1° Primaria</div>
+    <div class="pb-right">Sección I · Marco General</div>
+  </div>
+
+  <!-- HISTORIA: ACTO I -->
+  <div class="story">
+    <div class="story-part">📖 Historia Hilo — Acto I · La presentación de Emilio</div>
+    <div class="story-title">"El niño que contaba con los dedos escondidos bajo el pupitre"</div>
+    <p>Emilio tiene seis años y ocho meses. Cuando su maestra pregunta "¿cuánto es 7 + 4?", él mete las manos bajo la mesa, esconde los dedos y cuenta en silencio. Cuando llega al resultado, ya todos sus compañeros levantaron la mano. Emilio no levanta la suya.</p>
+    <p>No porque no sepa. Sino porque aprendió que su manera de resolver — con los dedos, contando uno a uno — <em>estaba mal</em>. Alguien se lo hizo entender.</p>
+    <div class="story-reflection">¿Han conocido a un Emilio en su salón? ¿Cuántos Emilios hay ahora mismo esperando que cambiemos algo?</div>
+  </div>
+
+  <!-- PROPÓSITO -->
+  <div class="sh" style="margin-top:10px;">
+    <div class="sh-num">·</div>
+    <div class="sh-title ind">Propósito General del Taller</div>
+  </div>
+
+  <div class="act ind-top">
+    <div class="act-tag">Propósito central</div>
+    <div class="act-title">¿Para qué estamos aquí hoy?</div>
+    <p>Que cada docente salga con <strong>al menos una idea que cambie lo que hace mañana en su aula</strong>: comprendiendo cómo construyen los niños de primer grado el pensamiento aditivo, con estrategias concretas para enseñar suma y resta desde el sentido numérico, y con la convicción de que <strong>el error es el camino, no el obstáculo</strong>.</p>
+  </div>
+
+  <!-- APRENDIZAJES -->
+  <div class="g2" style="margin-top:8px;">
+    <div class="cell ind">
+      <div class="cell-title">📐 Saben y comprenden</div>
+      <ul>
+        <li>Las estructuras aditivas de suma y resta</li>
+        <li>Los niveles de desarrollo del número en 6 años</li>
+        <li>Por qué el sentido numérico precede al algoritmo</li>
+        <li>La diferencia entre cálculo mental y mecanización</li>
+      </ul>
+    </div>
+    <div class="cell vrd">
+      <div class="cell-title">🛠 Pueden hacer</div>
+      <ul>
+        <li>Diseñar problemas contextualizados para 1°</li>
+        <li>Usar material concreto con intención didáctica</li>
+        <li>Identificar y atender errores típicos con precisión</li>
+        <li>Aplicar estrategias de cálculo mental progresivo</li>
+      </ul>
+    </div>
+    <div class="cell amb">
+      <div class="cell-title">💡 Valoran y transforman</div>
+      <ul>
+        <li>El error como información, no como fracaso</li>
+        <li>El proceso de pensar sobre el resultado correcto</li>
+        <li>La confianza en la capacidad matemática del niño</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <div class="cell-title">🔁 Se llevan para mañana</div>
+      <ul>
+        <li>3 actividades replicables sin comprar nada</li>
+        <li>1 compromiso concreto firmado</li>
+        <li>Una nueva pregunta para hacerle a sus alumnos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- AGENDA -->
+  <div class="sh">
+    <div class="sh-num">·</div>
+    <div class="sh-title">Agenda del Taller</div>
+    <div class="sh-time">4:30 – 5 horas</div>
+  </div>
+
+  <table class="agenda">
+    <thead>
+      <tr><th>Horario</th><th>Actividad</th><th>Fase</th><th>Duración</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>08:00</td><td><span class="ag-t">Registro y bienvenida</span><span class="ag-d">Lista, materiales, clima inicial</span></td><td><span class="fase i">Inicio</span></td><td>10 min</td></tr>
+      <tr><td>08:10</td><td><span class="ag-t">Historia de Emilio — Acto I</span><span class="ag-d">Gancho emocional + reflexión inicial</span></td><td><span class="fase i">Inicio</span></td><td>8 min</td></tr>
+      <tr><td>08:18</td><td><span class="ag-t">Rompehielo "3N"</span><span class="ag-d">Secuencia sin múltiplos de 3 · círculo</span></td><td><span class="fase i">Inicio</span></td><td>15 min</td></tr>
+      <tr><td>08:33</td><td><span class="ag-t">Reto Matemático — El Truco</span><span class="ag-d">Captación total · número de 5 cifras</span></td><td><span class="fase i">Inicio</span></td><td>20 min</td></tr>
+      <tr><td>08:53</td><td><span class="ag-t">Bloque 1 · La suma en primer grado</span><span class="ag-d">Estructuras · concreto · problemas</span></td><td><span class="fase d">Desarrollo</span></td><td>40 min</td></tr>
+      <tr><td>09:33</td><td><span class="ag-t">Teoría exprés + Historia Acto II</span><span class="ag-d">Piaget · Vygotsky · ZDP · Emilio en el mercado</span></td><td><span class="fase d">Desarrollo</span></td><td>15 min</td></tr>
+      <tr><td>09:48</td><td><span class="ag-t">Bloque 2 · La resta: 3 estructuras</span><span class="ag-d">Quitar · comparar · completar</span></td><td><span class="fase d">Desarrollo</span></td><td>35 min</td></tr>
+      <tr><td>10:23</td><td><span class="ag-t">☕ Receso</span></td><td>—</td><td>20 min</td></tr>
+      <tr><td>10:43</td><td><span class="ag-t">Bloque 3 · Cálculo mental progresivo</span><span class="ag-d">Estrategias por nivel · complementos al 10</span></td><td><span class="fase d">Desarrollo</span></td><td>35 min</td></tr>
+      <tr><td>11:18</td><td><span class="ag-t">Errores comunes y cómo intervenir</span><span class="ag-d">Diagnóstico + intervención precisa</span></td><td><span class="fase d">Desarrollo</span></td><td>25 min</td></tr>
+      <tr><td>11:43</td><td><span class="ag-t">Historia de Emilio — Acto III + Cierre</span><span class="ag-d">Resolución · Carta al colega · Compromisos</span></td><td><span class="fase c">Cierre</span></td><td>20 min</td></tr>
+      <tr><td>12:03</td><td><span class="ag-t">Evaluación del taller · Rúbrica</span><span class="ag-d">Autoevaluación docente · firmas</span></td><td><span class="fase c">Cierre</span></td><td>10 min</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pfoot">
+    <span class="pf-l">Taller PALE · Suma y Resta · 1° Primaria · NEM 2025–2026</span>
+    <span class="pf-r">02 / 08</span>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 3 · ROMPEHIELO 3N + TRUCO MATEMÁTICO
+══════════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-band">
+    <div class="pb-left">Taller PALE · Suma y Resta · 1° Primaria</div>
+    <div class="pb-right">Sección II · Actividades de Inicio</div>
+  </div>
+
+  <!-- 3N -->
+  <div class="sh">
+    <div class="sh-num">1</div>
+    <div class="sh-title">Rompehielo "3N" — Sin los Múltiplos</div>
+    <div class="sh-time">15 MIN</div>
+  </div>
+
+  <div class="faci">
+    <div class="faci-tag">// El facilitador dice — antes de explicar las reglas:</div>
+    <p>Pónganse de pie. Vamos a formar un círculo grande. Y voy a pedirles algo que suena muy sencillo, pero que los va a hacer pensar más de lo que creen. <em>No se puede practicar antes.</em> Las reglas van de una vez y empezamos.</p>
+  </div>
+
+  <div class="g2" style="margin-top:6px;">
+    <div class="act">
+      <div class="act-tag">Mecánica del juego</div>
+      <div class="act-title">Las Reglas — Simple, Brutal</div>
+      <ul class="steps">
+        <li><span class="sn terra">1</span><span class="st">Se cuenta en secuencia: 1, 2, 3, 4, 5, 6…</span></li>
+        <li><span class="sn terra">2</span><span class="st">Cuando llegue un <strong>múltiplo de 3</strong> (3, 6, 9, 12…): <strong>no se dice el número — se aplaude una vez</strong></span></li>
+        <li><span class="sn terra">3</span><span class="st">Pierde quien diga el número prohibido</span></li>
+        <li><span class="sn terra">4</span><span class="st">Pierde quien aplauda cuando no corresponde</span></li>
+        <li><span class="sn terra">5</span><span class="st">Pierde quien tarde <strong>más de 3 segundos</strong></span></li>
+        <li><span class="sn terra">6</span><span class="st">Quien pierde se sienta. El círculo continúa hasta que queden 3.</span></li>
+      </ul>
+      <p class="sn-note" style="margin-top:5px;">Ronda 2 opcional: además sin múltiplos de 5 (doble inhibición)</p>
+    </div>
+    <div class="cell ind">
+      <div class="cell-title">🎯 Propósito didáctico real</div>
+      <ul>
+        <li><strong>Control inhibitorio:</strong> Suprimir la respuesta automática (decir el número) para ejecutar la alternativa (aplaudir)</li>
+        <li><strong>Memoria de trabajo:</strong> Saber en qué número va la secuencia y cuál es el siguiente</li>
+        <li><strong>Atención sostenida:</strong> No "desconectarse" entre turno y turno</li>
+        <li><strong>Flexibilidad cognitiva:</strong> Cambiar de modo (contar → aplaudir) en milisegundos</li>
+        <li><strong>Sentido de la secuencia:</strong> Ordinal, cardinal, ritmo numérico</li>
+        <li><strong>Clima emocional:</strong> Error + risa = desbloqueo emocional</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="peda">
+    <div class="peda-tag">// En el aula de 1° — Versión adaptada para niños de 6 años</div>
+    <p>Se comienza saltando solo el número <strong>5</strong> (o el <strong>2</strong>). Se cuenta: 1, 👏, 3, 4, 👏, 6… Activa exactamente las funciones ejecutivas que los niños están desarrollando: la misma base neurológica que necesitan para operar con números. <strong>No es un juego "de calentamiento". Es matemáticas disfrazadas de juego.</strong></p>
+  </div>
+
+  <div class="faci" style="margin-top:6px;">
+    <div class="faci-tag">// Reflexión guiada tras el juego (3 min) — el facilitador pregunta:</div>
+    <p>¿Qué tuvieron que hacer para no equivocarse? ¿Qué pasa en el cerebro cuando alguien se equivoca? Ahora imaginen esto: <em>sus alumnos de primer grado viven esto exactamente cuando les piden que "calculen" 7 + 5 en 10 segundos delante de todos</em>. ¿Qué sienten? ¿Qué hace eso a su relación con las matemáticas?</p>
+  </div>
+
+  <div class="divH"></div>
+
+  <!-- TRUCO MATEMÁTICO -->
+  <div class="sh">
+    <div class="sh-num">2</div>
+    <div class="sh-title">Reto de Captación — El Truco Matemático</div>
+    <div class="sh-time">20 MIN</div>
+  </div>
+
+  <div class="faci">
+    <div class="faci-tag">// El facilitador dice — con total confianza y pausa dramática:</div>
+    <p>Necesito que alguien piense en un número de cinco cifras. Cualquiera. Yo voy a predecir el resultado de una suma que todavía no existe. <em>Y voy a pedirle a alguien de este grupo que guarde mi predicción desde antes de que empecemos.</em></p>
+  </div>
+
+  <ul class="steps" style="margin-top:8px;">
+    <li><span class="sn vio">1</span><span class="st">Un participante dice un número de 5 cifras. Ej: <code class="code-inline">47,382</code>. El facilitador suma mentalmente +20,000 +2 = <code class="code-inline">67,384</code>. Lo escribe en un papel doblado y lo entrega a alguien para guardar.</span></li>
+    <li><span class="sn vio">2</span><span class="st">Pide a <strong>dos personas más</strong> que cada una diga un número de 5 cifras. Ej: A dice <code class="code-inline">23,541</code> y B dice <code class="code-inline">61,209</code>.</span></li>
+    <li><span class="sn vio">3</span><span class="st">El facilitador escribe en el pizarrón sus dos números: el complemento de A a 99,999 = <code class="code-inline">76,458</code>; el complemento de B = <code class="code-inline">38,790</code>. (Cada dígito del facilitador + dígito del participante = 9.)</span></li>
+    <li><span class="sn vio">4</span><span class="st">En el pizarrón hay 5 números: el del grupo + 2 de participantes + 2 del facilitador. Se suman todos en voz alta.</span></li>
+    <li><span class="sn vio">5</span><span class="st"><strong>El resultado coincide exactamente con el papel guardado.</strong> Se abre. Asombro total.</span></li>
+  </ul>
+
+  <div class="math-demo" style="margin-top:8px;">
+    <span class="md-label">Demostración numérica — por qué funciona</span>
+    Número del grupo:        <span class="md-hi">47,382</span>
+    Tu número 1:             <span class="md-hi">76,458</span>  <span class="md-note">← (99,999 − 23,541)</span>
+    Participante A:          <span class="md-hi">23,541</span>
+    Tu número 2:             <span class="md-hi">38,790</span>  <span class="md-note">← (99,999 − 61,209)</span>
+    Participante B:          <span class="md-hi">61,209</span>
+    <span class="md-rule"></span>
+    TOTAL:                   <span class="md-res">247,380</span>
+    <span class="md-label" style="margin-top:6px;">Fórmula oculta:</span>
+    N + (99,999 − A) + A + (99,999 − B) + B
+    = N + 99,999 + 99,999
+    = N + 199,998
+    = N + 200,000 − 2   →  <span class="md-res">por eso al inicio sumas 20,000 y luego +2</span>
+  </div>
+
+  <div class="peda">
+    <div class="peda-tag">// Aplicación al aula — Versión para 1° grado</div>
+    <p>El asombro que sintieron ahora es el mismo que debemos crear en los niños cuando descubren que <strong>5 + 5 siempre da 10</strong>, o que si saben que 7 + 3 = 10, ya saben cuánto le falta al 7 para llegar a 10. <strong>Complementos al 10:</strong> "Digo un número, tú me dices cuánto le falta." Sencillo, poderoso, replicable mañana.</p>
+  </div>
+
+  <div class="pfoot">
+    <span class="pf-l">Taller PALE · Suma y Resta · 1° Primaria · NEM 2025–2026</span>
+    <span class="pf-r">03 / 08</span>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 4 · BLOQUE 1: SUMA + TEORÍA EXPRÉS
+══════════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-band">
+    <div class="pb-left">Taller PALE · Suma y Resta · 1° Primaria</div>
+    <div class="pb-right">Sección III · Bloque 1 · La Suma</div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-num">3</div>
+    <div class="sh-title">Bloque 1 — La Suma en Primer Grado</div>
+    <div class="sh-time">40 MIN</div>
+  </div>
+
+  <div class="faci">
+    <div class="faci-tag">// El facilitador dice:</div>
+    <p>Antes de que les enseñemos a los niños el signo "+", ellos ya saben sumar. Lo hacen cuando juntan sus canicas, cuando cuentan cuántos tacos se comieron o cuando dicen "somos cuatro, llegó mi prima, ahora somos cinco". <em>Nuestro trabajo es formalizar lo que ya saben, no imponerles un algoritmo que aún no tiene sentido para ellos.</em></p>
+  </div>
+
+  <div class="g3" style="margin-top:8px;">
+    <div class="cell ind">
+      <div class="cell-title">➕ Reunir</div>
+      <p>Dos colecciones separadas se juntan en una sola.</p>
+      <p style="margin-top:5px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">"Tengo 4 manzanas y me dan 3 más. ¿Cuántas tengo?"</p>
+    </div>
+    <div class="cell ind">
+      <div class="cell-title">📈 Agregar</div>
+      <p>Una cantidad que crece con el tiempo.</p>
+      <p style="margin-top:5px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">"Tenía 6 estampas, hoy gané 4 más. ¿Cuántas tengo?"</p>
+    </div>
+    <div class="cell ind">
+      <div class="cell-title">🔍 Completar</div>
+      <p>¿Cuánto falta para llegar a un total ya conocido?</p>
+      <p style="margin-top:5px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">"Necesito 10 pesos. Tengo 7. ¿Cuánto me falta?"</p>
+    </div>
+  </div>
+
+  <div class="act" style="margin-top:8px;">
+    <div class="act-tag">Actividad práctica docente · Material concreto · 15 min</div>
+    <div class="act-title">🫘 La Bolsa Misteriosa — 3 Niveles en Una Actividad</div>
+    <p><strong>Material:</strong> Frijoles, tapitas o piedras. Una bolsita opaca. Hoja de registro. Grupos de 3 docentes.</p>
+    <ul class="steps" style="margin-top:6px;">
+      <li><span class="sn ind">1</span><span class="st"><strong>Nivel concreto:</strong> Un docente "actúa como el niño" — mete 6 frijoles a la bolsa (todos ven), luego 4 más. "¿Cuántos hay?" → Los saca y cuenta uno a uno señalando cada objeto. Registra: 6 + 4 = ___</span></li>
+      <li><span class="sn ind">2</span><span class="st"><strong>Nivel pictórico:</strong> El mismo problema, pero el niño dibuja los frijoles antes de contar. El dibujo como puente entre el objeto y el símbolo.</span></li>
+      <li><span class="sn ind">3</span><span class="st"><strong>Nivel abstracto:</strong> Solo la expresión numérica: 6 + 4 = ___. ¿Cambia algo? ¿Para quién es más difícil?</span></li>
+      <li><span class="sn ind">4</span><span class="st"><strong>Reflexión en equipo (3 min):</strong> ¿En cuál nivel están la mayoría de sus alumnos ahora? ¿Qué ocurre cuando saltamos directamente al nivel 3?</span></li>
+    </ul>
+  </div>
+
+  <div class="theory" style="margin-top:8px;">
+    <div class="theory-bar"></div>
+    <div class="theory-body">
+      <div class="theory-tag">// Teoría exprés — Bruner (CPA) — traducida para docentes</div>
+      <p><strong>Concreto → Pictórico → Abstracto.</strong> El niño de 6 años no puede prescindir del objeto real en las primeras semanas. Saltarse el material concreto e ir directo al símbolo es como pedirle que lea sin haber visto letras. Esta secuencia puede durar semanas o meses según el niño. <strong>Ir demasiado rápido al símbolo es la causa número uno de que los niños "odien" las matemáticas.</strong></p>
+    </div>
+  </div>
+
+  <div class="hq" style="margin-top:8px;">
+    <p>Lo que los niños construyen por sí mismos lo recuerdan para siempre. Lo que simplemente se les dice, lo olvidan la semana siguiente.</p>
+    <span class="attr">— Jean Piaget · adaptado al contexto de primer grado</span>
+  </div>
+
+  <div class="divH"></div>
+
+  <!-- TEORÍA EXPRÉS -->
+  <div class="sh">
+    <div class="sh-num">4</div>
+    <div class="sh-title vrd">Teoría Exprés — Lo que Necesitas Saber Sin Morir de Aburrimiento</div>
+    <div class="sh-time">15 MIN</div>
+  </div>
+
+  <div class="g2">
+    <div class="act vrd-top">
+      <div class="act-tag">Piaget · Constructivismo</div>
+      <div class="act-title" style="font-size:10pt;">El niño construye el número</div>
+      <p>El número no se enseña. <strong>Se construye.</strong> Un niño que sabe recitar "uno, dos, tres" no necesariamente entiende que "tres" significa una cantidad fija. Piaget llama a esto <strong>conservación del número</strong>. En primer grado, muchos niños aún están en ese proceso. No es lentitud — es desarrollo.</p>
+      <p class="sn-note" style="margin-top:4px;">👉 Por eso la manipulación de objetos reales no es "pérdida de tiempo". Es la base sin la que el símbolo no tiene sentido.</p>
+    </div>
+    <div class="act vrd-top">
+      <div class="act-tag">Vygotsky · ZDP · Mediación</div>
+      <div class="act-title" style="font-size:10pt;">Lo que puede hacer con ayuda</div>
+      <p>La <strong>Zona de Desarrollo Próximo (ZDP)</strong> es la distancia entre lo que el niño puede hacer solo y lo que puede hacer con apoyo. El maestro que se para junto a Emilio y pregunta <em>"¿desde qué número puedes empezar?"</em> en lugar de decirle la respuesta, está operando exactamente en la ZDP.</p>
+      <p class="sn-note" style="margin-top:4px;">👉 La pregunta correcta del docente vale más que la explicación correcta.</p>
+    </div>
+    <div class="act amb-top">
+      <div class="act-tag">Didáctica del Error</div>
+      <div class="act-title" style="font-size:10pt;">El error habla — ¿lo escuchamos?</div>
+      <p>Cuando un niño dice 5 + 3 = 9, no está "mal". Nos está diciendo que <strong>todavía incluye el número inicial en su conteo</strong>. Ese error es un mapa de su pensamiento. Si lo tachamos de rojo, borramos el mapa. Si preguntamos "¿cómo lo hiciste?", el niño mismo descubre su error.</p>
+    </div>
+    <div class="act amb-top">
+      <div class="act-tag">Sentido Numérico · Cálculo Mental vs Mecanización</div>
+      <div class="act-title" style="font-size:10pt;">Flexibilidad sobre velocidad</div>
+      <p>Un niño con sentido numérico resuelve 9 + 6 así: <em>"9 + 1 = 10, y me sobran 5, entonces 15"</em>. Descompone, recompone, usa lo que sabe. Un niño mecanizado espera a que le digan el procedimiento. <strong>El cálculo mental es estrategia, no velocidad.</strong></p>
+    </div>
+  </div>
+
+  <!-- HISTORIA ACTO II -->
+  <div class="story" style="margin-top:8px;">
+    <div class="story-part">📖 Historia Hilo — Acto II · Emilio en el mercado</div>
+    <div class="story-title">"La maestra que se quedó callada"</div>
+    <p>Un día, la maestra de Emilio llevó al salón una bolsita con 8 tapitas y le preguntó: "Emilio, si meto 5 más, ¿cuántas quedan?" Emilio empezó a contar con los dedos. La maestra no lo detuvo. Esperó. Emilio llegó al resultado. Era correcto.</p>
+    <p>La maestra le preguntó: <em>"¿Cómo lo hiciste?"</em> Nadie le había preguntado eso nunca. Emilio explicó. Y al hacerlo, entendió que su manera de pensar tenía valor.</p>
+    <div class="story-reflection">¿Cuándo fue la última vez que le preguntamos a un alumno cómo lo hizo, en lugar de si lo hizo bien?</div>
+  </div>
+
+  <div class="pfoot">
+    <span class="pf-l">Taller PALE · Suma y Resta · 1° Primaria · NEM 2025–2026</span>
+    <span class="pf-r">04 / 08</span>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 5 · BLOQUE 2: LA RESTA · 3 ESTRUCTURAS
+══════════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-band">
+    <div class="pb-left">Taller PALE · Suma y Resta · 1° Primaria</div>
+    <div class="pb-right">Sección IV · Bloque 2 · La Resta</div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-num">5</div>
+    <div class="sh-title">Bloque 2 — La Resta: Tres Caras que Casi Nunca Enseñamos</div>
+    <div class="sh-time">35 MIN</div>
+  </div>
+
+  <div class="faci">
+    <div class="faci-tag">// El facilitador dice:</div>
+    <p>La resta tiene <strong>tres estructuras completamente diferentes</strong> y la mayoría de los libros de texto solo muestran una: quitar. Si solo enseñamos quitar, los niños no pueden resolver "¿cuántos le faltan a Ana para tener los mismos que Luis?" — porque eso es <em>comparación</em>, no sustracción directa. Y comparación es la más difícil. ¿Por qué la dejamos para después?</p>
+  </div>
+
+  <div class="g3" style="margin-top:8px;">
+    <div class="cell">
+      <div class="cell-title">➖ Quitar</div>
+      <p>De una cantidad, se retira una parte. El resultado es lo que queda.</p>
+      <p style="margin-top:5px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">"Tenía 9 galletas y me comí 3. ¿Cuántas quedan?"</p>
+      <p style="margin-top:4px;font-size:8pt;"><strong>Dificultad:</strong> Baja. La acción de quitar es visible y concreta.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-title">⚖️ Comparar</div>
+      <p>¿Cuánto más tiene uno que otro? La diferencia entre dos cantidades.</p>
+      <p style="margin-top:5px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">"Luis tiene 8 y Ana tiene 5. ¿Cuántos más tiene Luis?"</p>
+      <p style="margin-top:4px;font-size:8pt;"><strong>Dificultad:</strong> Alta. No hay acción visible — la resta está implícita.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-title">🎯 Completar</div>
+      <p>¿Cuánto falta para llegar a un total ya conocido?</p>
+      <p style="margin-top:5px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">"La caja tiene 10 espacios. Ya hay 6 lápices. ¿Cuántos faltan?"</p>
+      <p style="margin-top:4px;font-size:8pt;"><strong>Dificultad:</strong> Media. Se puede modelar visualmente.</p>
+    </div>
+  </div>
+
+  <div class="act" style="margin-top:8px;">
+    <div class="act-tag">Actividad práctica docente · Equipo de 4 · 15 min</div>
+    <div class="act-title">🗼 Torres que se Comparan + Tendedero de Problemas</div>
+    <p><strong>Parte A — Torres (comparar):</strong> Dos docentes construyen torres de cubos encajables de diferente altura (ej. 9 y 6). Las colocan juntas. "¿Cuántos cubos le faltan a la torre chica para llegar a la grande?" La diferencia es visible, tangible. Después representan en papel.</p>
+    <p style="margin-top:5px;"><strong>Parte B — Tendedero:</strong> Cada equipo recibe 6 tarjetas con problemas de resta. Deben colgarlas en el tendedero según su tipo: quitar / comparar / completar. Al socializar: ¿cuál tipo fue más difícil de clasificar? ¿Por qué?</p>
+    <p class="sn-note" style="margin-top:5px;">→ <strong>La discusión entre docentes sobre cuál tipo es más difícil es oro didáctico:</strong> eso mismo pasa con sus alumnos. Siempre la comparación gana. ¿Por qué? Porque la resta no es visible en la situación — requiere pensamiento abstracto.</p>
+  </div>
+
+  <div class="theory" style="margin-top:6px;">
+    <div class="theory-bar"></div>
+    <div class="theory-body">
+      <div class="theory-tag">// Resolución de problemas como eje — NEM + Enfoque PALE</div>
+      <p>El problema no es el final de la enseñanza — <strong>es el comienzo.</strong> En primer grado, el niño debe enfrentar la situación problemática <strong>antes</strong> de que el maestro le enseñe el procedimiento. El problema genera la necesidad de aprender. Sin necesidad, no hay aprendizaje real.</p>
+      <ul style="margin-top:4px;">
+        <li>Primero el problema contextualizado (con sentido para el niño)</li>
+        <li>Luego el proceso de resolución con material concreto</li>
+        <li>Después la representación (dibujo, esquema)</li>
+        <li>Al final el símbolo matemático (la "cuenta")</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="act amb-top" style="margin-top:8px;">
+    <div class="act-tag">Actividad para aula — Conexión NEM · Proyecto de comunidad</div>
+    <div class="act-title">🛒 El Mercado del Salón — Problemas que Vienen de Vivir</div>
+    <p>Los niños montan un "mercado" con objetos del salón. Etiquetas de precio simbólico (tapitas = pesos). Compran, venden, dan cambio. El docente lanza preguntas: <em>"Si tienes 8 tapitas y el juguete cuesta 5, ¿cuántas te regresan?"</em></p>
+    <p style="margin-top:4px;">El problema surge de la vida real del grupo — no del libro. Esto es exactamente lo que la NEM llama <strong>aprendizaje situado.</strong></p>
+  </div>
+
+  <div class="hq">
+    <p>No enseñamos a restar. Enseñamos a pensar en situaciones donde algo falta, sobra o se compara. El símbolo de la resta viene después del pensamiento, nunca antes.</p>
+    <span class="attr">— Principio PALE · Pensamiento Matemático · NEM 2022</span>
+  </div>
+
+  <div class="pfoot">
+    <span class="pf-l">Taller PALE · Suma y Resta · 1° Primaria · NEM 2025–2026</span>
+    <span class="pf-r">05 / 08</span>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 6 · CÁLCULO MENTAL · ERRORES COMUNES
+══════════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-band">
+    <div class="pb-left">Taller PALE · Suma y Resta · 1° Primaria</div>
+    <div class="pb-right">Sección V · Cálculo Mental · Errores</div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-num">6</div>
+    <div class="sh-title amb">Bloque 3 — Cálculo Mental Progresivo en 1°</div>
+    <div class="sh-time">35 MIN</div>
+  </div>
+
+  <div class="faci">
+    <div class="faci-tag">// El facilitador dice:</div>
+    <p>Cálculo mental no es "hacerlo rápido en la cabeza". Es <em>tener estrategias flexibles para operar con números</em>. Un niño que cuenta con sus dedos <strong>está haciendo cálculo mental</strong>. El objetivo es que esas estrategias se vuelvan más eficientes con el tiempo, no que las suprimamos antes de que maduren.</p>
+  </div>
+
+  <div class="g2" style="margin-top:8px;">
+    <div class="cell">
+      <div class="cell-title">🖐 Nivel 1 · Contar Todo</div>
+      <p><strong>Normal: sep–oct de 1°</strong></p>
+      <p>Para 4+3: levanta 4 dedos, luego 3 más, cuenta todos desde 1. Válido, necesario, esperado. No corregir.</p>
+      <p style="margin-top:4px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">¿Cómo apoyar? → Darle tiempo. Darle objetos. No presionar velocidad.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-title">↗️ Nivel 2 · Contar a Partir</div>
+      <p><strong>Emergente: nov–ene</strong></p>
+      <p>Empieza desde el primer número: "3… 4, 5, 6". Usa dedos para llevar la cuenta de cuántos sumó. Gran avance cognitivo.</p>
+      <p style="margin-top:4px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">¿Cómo promover? → "¿Desde qué número puedes empezar para no contar todo?"</p>
+    </div>
+    <div class="cell ind">
+      <div class="cell-title">🚀 Nivel 3 · Contar desde el Mayor</div>
+      <p><strong>Intermedio: feb–abr</strong></p>
+      <p>Para 2+7: empieza en 7 (el mayor) y cuenta 2: "7… 8, 9". Más eficiente. Requiere reconocer cuál es el número mayor.</p>
+      <p style="margin-top:4px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">¿Cómo promover? → "¿Cuál número es más grande? Empieza por ese."</p>
+    </div>
+    <div class="cell vrd">
+      <div class="cell-title">⚡ Nivel 4 · Descomposición</div>
+      <p><strong>Avanzado: abr–jun</strong></p>
+      <p>Para 8+5: "8+2=10, me sobran 3, son 13". Usa el 10 como ancla. Base del cálculo eficiente.</p>
+      <p style="margin-top:4px;font-style:italic;font-size:8pt;color:var(--tinta-lite);">¿Cómo promover? → Juegos de complemento al 10 diarios.</p>
+    </div>
+  </div>
+
+  <div class="act vrd-top" style="margin-top:8px;">
+    <div class="act-tag">Actividad replicable en aula · diaria · 5 min</div>
+    <div class="act-title">🎵 La Ronda de los Complementos al 10</div>
+    <p>El maestro dice un número (1–9), los niños responden con su complemento. Primero lento, luego con ritmo de palmas. En círculo o como juego "¿quién falta?"</p>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+      <code class="code-inline">1→9</code><code class="code-inline">2→8</code><code class="code-inline">3→7</code>
+      <code class="code-inline">4→6</code><code class="code-inline">5→5</code><code class="code-inline">6→4</code>
+      <code class="code-inline">7→3</code><code class="code-inline">8→2</code><code class="code-inline">9→1</code>
+    </div>
+    <p class="sn-note" style="margin-top:5px;">→ Esta actividad automatiza los complementos al 10 — la base de todo cálculo eficiente. 5 minutos diarios, 3 semanas: impacto visible.</p>
+  </div>
+
+  <div class="divH"></div>
+
+  <div class="sh">
+    <div class="sh-num">7</div>
+    <div class="sh-title">Errores Comunes en Alumnos — y Cómo Intervenir</div>
+    <div class="sh-time">25 MIN</div>
+  </div>
+
+  <div class="faci">
+    <div class="faci-tag">// El facilitador dice:</div>
+    <p>El error en matemáticas no es fracaso — es <em>información diagnóstica.</em> Cada error nos dice dónde está el pensamiento del niño. La pregunta no es "¿por qué se equivocó?" sino <em>"¿qué estaba pensando cuando se equivocó?"</em></p>
+  </div>
+
+  <table class="etab" style="margin-top:8px;">
+    <thead>
+      <tr><th>Error del niño</th><th>Diagnóstico — ¿Qué nos dice?</th><th>Intervención que funciona</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5 + 3 = 9<br>(cuenta el 5 como uno)</td>
+        <td>Aún no domina "contar a partir". Incluye el número inicial en el conteo.</td>
+        <td>Recta numérica física. "Párate en el 5. ¿Cuántos pasos de uno das?"</td>
+      </tr>
+      <tr>
+        <td>Pierde la cuenta al usar los dedos</td>
+        <td>Memoria de trabajo limitada — completamente normal a los 6 años.</td>
+        <td>Darle fichas o marcas en papel. "¿Cómo puedes llevar la cuenta sin perderte?"</td>
+      </tr>
+      <tr>
+        <td>8 − 3 = 6<br>(resta mal)</td>
+        <td>Confunde el número a restar con la cantidad de pasos hacia atrás.</td>
+        <td>Contar 8 objetos, retirar 3 físicamente, contar los que quedan.</td>
+      </tr>
+      <tr>
+        <td>No resuelve problemas de comparación</td>
+        <td>No ha interiorizado la resta como diferencia. Solo conoce "quitar".</td>
+        <td>Torres de cubos de diferente altura. La diferencia se ve antes de calcularse.</td>
+      </tr>
+      <tr>
+        <td>Sabe el resultado pero no puede explicarlo</td>
+        <td>Intuición genuina O procedimiento sin comprensión.</td>
+        <td>"¿Cómo lo supiste? Enséñame con los frijoles." Valorar la intuición.</td>
+      </tr>
+      <tr>
+        <td>Escribe el 5 al revés o el 3 invertido</td>
+        <td>Error de representación gráfica — NO matemático.</td>
+        <td>No mezclar errores. El pensamiento matemático y la escritura del número son habilidades diferentes.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="peda" style="margin-top:6px;">
+    <div class="peda-tag">// Regla de oro para la intervención docente</div>
+    <ul>
+      <li><strong>Nunca decir:</strong> "Eso está mal" o "No, así no es"</li>
+      <li><strong>Preguntar:</strong> "¿Cómo lo hiciste? Cuéntame." — El error se vuelve visible para el mismo niño</li>
+      <li><strong>Ofrecer:</strong> Material concreto como herramienta de verificación, no de corrección</li>
+      <li><strong>Celebrar:</strong> El proceso de razonamiento, no solo el resultado correcto</li>
+    </ul>
+  </div>
+
+  <div class="pfoot">
+    <span class="pf-l">Taller PALE · Suma y Resta · 1° Primaria · NEM 2025–2026</span>
+    <span class="pf-r">06 / 08</span>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 7 · ACTIVIDADES PARA EL AULA · MATERIALES · EVALUACIÓN
+══════════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-band">
+    <div class="pb-left">Taller PALE · Suma y Resta · 1° Primaria</div>
+    <div class="pb-right">Sección VI · Para el Aula · Evaluación</div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-num">8</div>
+    <div class="sh-title vrd">4 Actividades para Replicar Mañana Mismo — Sin Comprar Nada</div>
+  </div>
+
+  <div class="g2">
+    <div class="act vrd-top">
+      <div class="act-tag">Suma · Concreto · 20 min</div>
+      <div class="act-title" style="font-size:10.5pt;">🫘 La Bolsa Misteriosa</div>
+      <p>Bolsita opaca + frijoles. El niño ve cuántos entran, tú metes más sin que vean. "¿Cuántos hay ahora?" Primero predice, luego verifica. Progresión: concreto → dibujo → número.</p>
+    </div>
+    <div class="act">
+      <div class="act-tag">Resta comparación · 20 min</div>
+      <div class="act-title" style="font-size:10.5pt;">🗼 Torres que se Miden</div>
+      <p>Dos torres de cubos de diferente altura juntas lado a lado. "¿Cuántos le faltan a la chica para llegar a la grande?" La diferencia se ve antes de calcularse. Registran en papel.</p>
+    </div>
+    <div class="act amb-top">
+      <div class="act-tag">Problemas contextualizados · NEM · 30 min</div>
+      <div class="act-title" style="font-size:10.5pt;">🛒 El Mercado del Salón</div>
+      <p>Objetos del salón + tapitas como monedas. Los niños compran, venden, dan cambio. Los problemas surgen de la situación, no del libro. Aprendizaje situado real.</p>
+    </div>
+    <div class="act ind-top">
+      <div class="act-tag">Cálculo mental · Diario · 5 min</div>
+      <div class="act-title" style="font-size:10.5pt;">🎯 El Reto del Complemento</div>
+      <p>"Digo un número, me dices cuánto le falta para llegar a 10." En círculo, con ritmo de palmas. Actividad de inicio de clase. 5 min. Impacto enorme en 3 semanas.</p>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- MATERIALES -->
+  <div class="sh" style="margin-top:4px;">
+    <div class="sh-num">9</div>
+    <div class="sh-title">Materiales del Taller</div>
+  </div>
+  <div class="pills">
+    <span class="pill"><span class="dot"></span>Frijoles / semillas</span>
+    <span class="pill"><span class="dot"></span>Tapitas de refresco</span>
+    <span class="pill"><span class="dot"></span>Cubos encajables</span>
+    <span class="pill"><span class="dot"></span>Bolsas opacas (1 x equipo)</span>
+    <span class="pill"><span class="dot"></span>Tarjetas de problemas</span>
+    <span class="pill"><span class="dot"></span>Recta numérica 0–20</span>
+    <span class="pill"><span class="dot"></span>Papel y marcadores</span>
+    <span class="pill"><span class="dot"></span>Rotafolio / pizarrón</span>
+    <span class="pill"><span class="dot"></span>Hojas de registro</span>
+    <span class="pill"><span class="dot"></span>Este documento impreso</span>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- EVIDENCIAS -->
+  <div class="sh" style="margin-top:4px;">
+    <div class="sh-num">10</div>
+    <div class="sh-title">Evidencias de Aprendizaje del Taller</div>
+  </div>
+  <div class="g2">
+    <div class="cell">
+      <div class="cell-title">📄 Productos escritos</div>
+      <ul>
+        <li>Hoja de la Bolsa Misteriosa resuelta como alumno</li>
+        <li>3 problemas de resta diseñados (uno de cada tipo)</li>
+        <li>Carta al colega con compromiso firmado</li>
+        <li>Rúbrica de autoevaluación completada</li>
+      </ul>
+    </div>
+    <div class="cell ind">
+      <div class="cell-title">🗣 Evidencias observables</div>
+      <ul>
+        <li>Participación activa en el juego 3N</li>
+        <li>Reacción y explicación en el truco matemático</li>
+        <li>Clasificación correcta de problemas en el tendedero</li>
+        <li>Diagnóstico correcto de errores en la tabla</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- RUBRICA -->
+  <div class="sh" style="margin-top:4px;">
+    <div class="sh-num">11</div>
+    <div class="sh-title">Evaluación del Taller — Autorrúbrica Docente</div>
+  </div>
+  <table class="rubric">
+    <thead>
+      <tr><th>Criterio</th><th>Lo logré ✓</th><th>En proceso ◐</th><th>Lo necesito ○</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Identifico las 3 estructuras de la suma en 1° grado</td><td class="circle-opt">○</td><td class="circle-opt">○</td><td class="circle-opt">○</td></tr>
+      <tr><td>Distingo los 3 tipos de resta (quitar, comparar, completar)</td><td class="circle-opt">○</td><td class="circle-opt">○</td><td class="circle-opt">○</td></tr>
+      <tr><td>Reconozco las 4 estrategias de cálculo mental por nivel</td><td class="circle-opt">○</td><td class="circle-opt">○</td><td class="circle-opt">○</td></tr>
+      <tr><td>Puedo intervenir ante errores sin inhibir el pensamiento del niño</td><td class="circle-opt">○</td><td class="circle-opt">○</td><td class="circle-opt">○</td></tr>
+      <tr><td>Diseñé al menos 1 problema contextualizado para mi grupo</td><td class="circle-opt">○</td><td class="circle-opt">○</td><td class="circle-opt">○</td></tr>
+      <tr><td>Entiendo la secuencia concreto → pictórico → abstracto</td><td class="circle-opt">○</td><td class="circle-opt">○</td><td class="circle-opt">○</td></tr>
+      <tr><td>Estoy listo/a para aplicar al menos 1 actividad esta semana</td><td class="circle-opt">○</td><td class="circle-opt">○</td><td class="circle-opt">○</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pfoot">
+    <span class="pf-l">Taller PALE · Suma y Resta · 1° Primaria · NEM 2025–2026</span>
+    <span class="pf-r">07 / 08</span>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PÁGINA 8 · CIERRE EMOCIONAL · HISTORIA ACTO III · CARTA
+══════════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-band">
+    <div class="pb-left">Taller PALE · Suma y Resta · 1° Primaria</div>
+    <div class="pb-right">Sección VII · Cierre · Historia Acto III</div>
+  </div>
+
+  <!-- HISTORIA ACTO III — RESOLUCIÓN -->
+  <div class="story">
+    <div class="story-part">📖 Historia Hilo — Acto III · El final que depende de nosotros</div>
+    <div class="story-title">"Lo que pasó en diciembre con Emilio"</div>
+    <p>Tres meses después de aquella clase del mercado, Emilio resolvió un problema frente a todo el grupo. Lo hizo usando tapitas, contando en voz alta, con los dedos visibles sobre la mesa. Cuando terminó, su maestra le preguntó: "¿Cómo lo hiciste?" Emilio explicó cada paso.</p>
+    <p>Un compañero dijo: "Yo lo hice diferente". Y la maestra respondió algo que Emilio nunca olvidaría: <em>"Qué interesante. ¿Nos explicas cómo?"</em></p>
+    <p>Emilio ya no esconde las manos bajo el pupitre. <strong>Aprendió que su manera de pensar tiene valor.</strong> Y aprendió eso porque alguien en su salón decidió cambiar la forma de enseñar.</p>
+    <div class="story-reflection">Ese alguien puede ser cualquiera de nosotros. De hecho, tiene que serlo.</div>
+  </div>
+
+  <div class="sh" style="margin-top:12px;">
+    <div class="sh-num">12</div>
+    <div class="sh-title">Cierre con Alto Impacto — "La Carta al Colega"</div>
+    <div class="sh-time">20 MIN</div>
+  </div>
+
+  <div class="faci">
+    <div class="faci-tag">// El facilitador dice — despacio, sin prisa:</div>
+    <p>Les voy a pedir el último ejercicio del taller. No es para entregarlo. Es solo para ustedes. Voy a darles cinco minutos para que escriban una carta breve — no a sus alumnos, sino a <em>un colega que no pudo venir hoy.</em> Cuéntenle qué aprendieron. Qué van a cambiar. Y por qué vale la pena.</p>
+  </div>
+
+  <div class="carta" style="margin-top:8px;">
+    <div class="carta-title">Querido/a colega:</div>
+    <div class="carta-line"></div>
+    <div class="carta-line"></div>
+    <div class="carta-line"></div>
+    <div class="carta-line"></div>
+    <div class="carta-line"></div>
+    <div class="carta-commit">
+      <div class="carta-commit-label">MI COMPROMISO CONCRETO PARA ESTA SEMANA:</div>
+      <div style="height:28px;"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:14px;">
+      <div style="text-align:center;">
+        <div style="border-bottom:1.5px solid var(--tinta-med);height:28px;"></div>
+        <div style="font-family:'Inconsolata',monospace;font-size:6pt;color:var(--tinta-lite);margin-top:4px;letter-spacing:0.1em;text-transform:uppercase;">Firma del docente</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="border-bottom:1.5px solid var(--tinta-med);height:28px;"></div>
+        <div style="font-family:'Inconsolata',monospace;font-size:6pt;color:var(--tinta-lite);margin-top:4px;letter-spacing:0.1em;text-transform:uppercase;">Fecha</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTAS REFLEXIÓN -->
+  <div class="sh" style="margin-top:10px;">
+    <div class="sh-num">·</div>
+    <div class="sh-title">Preguntas para la Reflexión Final — Plenaria 5 min</div>
+  </div>
+
+  <div class="g2" style="margin-top:4px;">
+    <div class="cell">
+      <div class="cell-title">01 →</div>
+      <p>¿Qué idea de este taller <strong>contradice</strong> algo que hacías antes? ¿Cómo te sientes con eso?</p>
+    </div>
+    <div class="cell">
+      <div class="cell-title">02 →</div>
+      <p>Si un papá te pregunta por qué no enseñas sumas con planas, ¿qué le dices ahora?</p>
+    </div>
+    <div class="cell ind">
+      <div class="cell-title">03 →</div>
+      <p>¿Cuál de los errores del alumno que vimos hoy <strong>tú malinterpretabas</strong>? ¿Qué harías diferente?</p>
+    </div>
+    <div class="cell ind">
+      <div class="cell-title">04 →</div>
+      <p>¿Qué actividad de este taller puedes hacer <strong>mañana</strong>, sin comprar nada y sin preparar más?</p>
+    </div>
+  </div>
+
+  <!-- CIERRE FINAL -->
+  <div class="closing" style="margin-top:10px;">
+    <div class="closing-label">Cierre del taller · Para llevarse escrito en la mente</div>
+    <div class="closing-title">Lo que hoy cambia en tu aula</div>
+    <p>La matemática no es un conjunto de reglas que se memorizan. Es una forma de <strong>pensar sobre el mundo</strong>. Cuando un niño de seis años descubre que 5 + 5 siempre da 10 — sin importar si contó con dedos, tapitas o dibujos — está haciendo matemáticas reales.</p>
+    <p style="margin-top:6px;">Nuestro trabajo no es darles respuestas. Es crear las condiciones para que <strong>piensen.</strong> El material concreto, los problemas con contexto, las preguntas en lugar de explicaciones — eso es pedagogía matemática real y eso es la NEM en acción.</p>
+    <p style="margin-top:6px;">Un maestro que sale de aquí con <strong>una sola idea que aplica mañana</strong> ya transformó su práctica. No hace falta cambiarlo todo de un día para otro. Hace falta empezar.</p>
+    <p style="margin-top:10px;font-family:'Playfair Display',serif;font-style:italic;font-size:11pt;color:rgba(253,250,243,0.95);">
+      "Emilio sigue sentado en la tercera fila.<br>La diferencia ahora es que tiene las manos sobre el pupitre."
+    </p>
+    <p style="font-family:'Inconsolata',monospace;font-size:7pt;color:rgba(255,255,255,0.25);margin-top:5px;letter-spacing:0.1em;">— Historia hilo del taller · PALE · NEM 2025–2026</p>
+  </div>
+
+  <div class="signs" style="margin-top:10px;">
+    <div class="sign-b"><div class="sign-line"></div><div class="sign-label">IVAN HERRERA DE LUNA</div><div class="sign-label">Facilitador del taller</div></div>
+    <div class="sign-b"><div class="sign-line">25 - MARZO - 2026</div><div class="sign-label">Fecha de aplicación</div></div>
+    <div class="sign-b"><div class="sign-line"></div><div class="sign-label">Vo. Bo. Supervisión / Dirección</div></div>
+  </div>
+
+  <div class="pfoot" style="margin-top:10px;">
+    <span class="pf-l">Taller PALE · Suma y Resta · 1° Primaria · NEM 2025–2026</span>
+    <span class="pf-r">08 / 08</span>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
