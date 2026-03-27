@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis CTE Marzo 2026 · 1° Primaria · Ma. Guadalupe Castorena</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════
+   DESIGN SYSTEM — Análisis Pedagógico CTE Vida Saludable
+   Paleta: Pizarra · Marfil · Verde Educativo · Coral
+════════════════════════════════════════════════════ */
+:root {
+  --pizarra:      #161B22;
+  --pizarra-med:  #21292F;
+  --pizarra-lite: #2D3B42;
+  --marfil:       #F7F3EC;
+  --marfil-warm:  #FEFCF8;
+  --verde:        #10B981;
+  --verde-dark:   #059669;
+  --verde-pale:   #ECFDF5;
+  --coral:        #E8553A;
+  --coral-pale:   #FDF0EC;
+  --azul:         #2563EB;
+  --azul-pale:    #EFF6FF;
+  --ambar:        #F59E0B;
+  --ambar-pale:   #FFFBEB;
+  --tinta:        #1A1F24;
+  --tinta-med:    #3D4852;
+  --tinta-suave:  #6B7685;
+  --linea:        #DDD8CF;
+  --linea-med:    #C8C0B4;
+  --sombra:       rgba(22,27,34,0.12);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #2A3038;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  color: var(--tinta);
+  font-size: 9.5pt;
+  line-height: 1.6;
+}
+
+/* ─── PAGE SYSTEM ─── */
+.page {
+  width: 210mm;
+  background: var(--marfil-warm);
+  margin: 0 auto 20px;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+.page:last-child { page-break-after: auto; }
+
+.page-inner {
+  padding: 14mm 15mm 13mm 14mm;
+  position: relative;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── COVER PAGE ─── */
+.cover-page {
+  background: var(--pizarra);
+  color: var(--marfil);
+}
+.cover-page .page-inner {
+  padding: 0;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grid pattern overlay */
+.cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(16,185,129,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,185,129,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.cover-accent-bar {
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--verde) 0%, var(--coral) 50%, var(--azul) 100%);
+}
+
+.cover-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20mm 18mm 16mm;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-top { }
+.cover-eyebrow {
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: var(--verde);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.cover-pale-tag {
+  display: inline-block;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: var(--verde);
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.cover-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 46pt;
+  font-weight: 800;
+  line-height: 0.92;
+  color: var(--marfil);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.cover-title .accent { color: var(--verde); }
+.cover-title .coral  { color: var(--coral); }
+
+.cover-subtitle {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14pt;
+  font-weight: 400;
+  color: rgba(247,243,236,0.6);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 28px;
+}
+
+.cover-desc {
+  font-size: 10pt;
+  font-weight: 300;
+  color: rgba(247,243,236,0.75);
+  line-height: 1.65;
+  max-width: 420px;
+  border-left: 2px solid var(--verde);
+  padding-left: 14px;
+}
+
+/* COVER STATS */
+.cover-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-top: 28px;
+}
+.stat-item {
+  padding: 14px 12px;
+  background: var(--pizarra-med);
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22pt;
+  font-weight: 700;
+  color: var(--verde);
+  display: block;
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 6pt;
+  color: rgba(247,243,236,0.45);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+
+/* COVER BOTTOM */
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cover-institution {
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  color: rgba(247,243,236,0.35);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cover-date {
+  text-align: right;
+}
+.cover-year {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24pt;
+  font-weight: 700;
+  color: var(--marfil);
+  line-height: 1;
+}
+.cover-date-small {
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  color: rgba(247,243,236,0.35);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* ─── HEADER BAND ─── */
+.page-header-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--linea);
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  color: var(--tinta-suave);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ph-left { }
+.ph-right { }
+
+/* ─── SECTION HEAD ─── */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 20px 0 14px 0;
+  padding-bottom: 6px;
+}
+.section-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32pt;
+  font-weight: 800;
+  color: var(--verde);
+  min-width: 44px;
+  line-height: 1;
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16pt;
+  font-weight: 700;
+  color: var(--tinta);
+  letter-spacing: -0.01em;
+  flex: 1;
+  border-bottom: 2px solid var(--verde);
+  padding-bottom: 4px;
+}
+.section-time {
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  background: rgba(16,185,129,0.08);
+  color: var(--verde-dark);
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+  margin-left: auto;
+}
+
+/* ─── TYPOGRAPHY ─── */
+h1 { font-size:16pt; font-weight:700; color:var(--tinta); margin:16px 0 8px; }
+h2 { font-size:13pt; font-weight:700; color:var(--tinta); margin:14px 0 6px; }
+h3 { font-size:11pt; font-weight:700; color:var(--tinta-med); margin:10px 0 4px; }
+p { margin:8px 0; }
+ul, ol { margin:8px 0 8px 20px; }
+li { margin:4px 0; }
+
+strong { font-weight:700; color:var(--tinta); }
+em { font-style:italic; color:var(--tinta-med); }
+
+a { color:var(--verde); text-decoration:none; border-bottom:1px dotted var(--verde); }
+
+/* ─── CARDS & BOXES ─── */
+.info-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0;
+}
+.info-cell {
+  border: 1.5px solid var(--linea-med);
+  padding: 12px 14px;
+  background: var(--marfil);
+  border-radius: 2px;
+}
+.info-cell-title {
+  font-weight:700;
+  font-size:10pt;
+  color:var(--tinta);
+  margin-bottom:6px;
+}
+.info-cell ul {
+  margin: 4px 0 0 16px;
+  font-size:9pt;
+}
+.info-cell li {
+  margin:3px 0;
+}
+
+.info-cell.verde-top {
+  border-top: 3px solid var(--verde);
+}
+
+.act-card {
+  border: 1.5px solid var(--linea);
+  padding: 12px 14px;
+  margin: 10px 0;
+  background: var(--marfil);
+  border-left: 4px solid var(--verde);
+}
+.act-card.dark-card {
+  background: var(--pizarra-lite);
+  border-color: var(--pizarra-med);
+  border-left-color: var(--verde);
+  color: var(--marfil);
+}
+.act-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: 4px;
+}
+.act-label.dark {
+  color: var(--verde);
+}
+.act-title {
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--tinta);
+}
+.act-title.light {
+  color: var(--marfil);
+}
+.act-body {
+  font-size: 9.5pt;
+  color: var(--tinta);
+}
+.act-body.light {
+  color: var(--marfil);
+}
+
+/* ─── PEDAGOGICAL BOXES ─── */
+.pedagogical-box {
+  border: 1.5px dashed var(--verde);
+  padding: 12px 14px;
+  margin: 10px 0;
+  background: var(--verde-pale);
+  border-radius: 2px;
+}
+.pedagogical-title {
+  font-weight: 700;
+  color: var(--verde-dark);
+  margin-bottom: 6px;
+  font-size: 10pt;
+}
+.pedagogical-box p {
+  font-size: 9pt;
+  color: var(--tinta);
+  margin: 4px 0;
+}
+
+/* ─── DIAGNOSTIC TABLE ─── */
+.diagnostic-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 9pt;
+}
+.diagnostic-table th {
+  background: var(--verde);
+  color: var(--marfil);
+  padding: 8px;
+  text-align: left;
+  font-weight: 700;
+}
+.diagnostic-table td {
+  border-bottom: 1px solid var(--linea);
+  padding: 8px;
+}
+.diagnostic-table tr:nth-child(even) {
+  background: var(--verde-pale);
+}
+
+/* ─── ACTIVITY SEQUENCE ─── */
+.activity-sequence {
+  margin: 12px 0;
+}
+.activity-step {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--verde);
+  background: var(--verde-pale);
+  border-radius: 2px;
+}
+.activity-step-title {
+  font-weight: 700;
+  color: var(--verde-dark);
+  font-size: 10pt;
+  margin-bottom: 4px;
+}
+.activity-step-content {
+  font-size: 9pt;
+  color: var(--tinta);
+  margin: 4px 0;
+}
+.activity-step-time {
+  font-family: 'Fira Code', monospace;
+  font-size: 7pt;
+  color: var(--tinta-suave);
+  margin-top: 6px;
+}
+
+/* ─── RUBRIC TABLE ─── */
+.rubric-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 8.5pt;
+}
+.rubric-table th {
+  background: var(--verde);
+  color: var(--marfil);
+  padding: 8px;
+  text-align: center;
+  font-weight: 700;
+}
+.rubric-table td {
+  border: 1px solid var(--linea);
+  padding: 8px;
+  text-align: center;
+}
+.rubric-table tr:nth-child(even) {
+  background: var(--verde-pale);
+}
+.rubric-table td:first-child {
+  text-align: left;
+  background: var(--marfil);
+  font-weight: 500;
+}
+.check-cell {
+  width: 40px;
+}
+
+/* ─── CLOSING BLOCK ─── */
+.closing-block {
+  background: var(--verde-pale);
+  border: 1.5px solid var(--verde);
+  padding: 14px 16px;
+  margin: 12px 0;
+  border-radius: 2px;
+}
+.closing-title {
+  font-weight: 700;
+  color: var(--verde-dark);
+  font-size: 11pt;
+  margin-bottom: 8px;
+}
+.closing-block p {
+  font-size: 9pt;
+  color: var(--tinta);
+  margin: 6px 0;
+  line-height: 1.65;
+}
+
+/* ─── DIVIDERS ─── */
+hr {
+  border: none;
+  height: 1px;
+  background: var(--linea);
+  margin: 16px 0;
+}
+.divider-heavy {
+  background: var(--linea-med);
+  height: 1.5px;
+  margin: 18px 0;
+}
+
+/* ─── PAGE FOOTER ─── */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  margin-top: auto;
+  border-top: 1px solid var(--linea);
+  font-family: 'Fira Code', monospace;
+  font-size: 6.5pt;
+  color: var(--tinta-suave);
+  letter-spacing: 0.05em;
+}
+.pf-name { }
+.pf-page { }
+
+/* ─── REFLECTION QUESTIONS ─── */
+.reflection-q {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+.rq-num {
+  font-family: 'Fira Code', monospace;
+  font-size: 8pt;
+  font-weight: 600;
+  color: var(--verde);
+  min-width: 30px;
+  flex-shrink: 0;
+}
+.rq-text {
+  font-size: 9pt;
+  color: var(--marfil);
+}
+
+/* ─── CONTEXT BOX ─── */
+.context-box {
+  background: var(--azul-pale);
+  border: 1.5px solid var(--azul);
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 2px;
+}
+.context-box-title {
+  font-weight: 700;
+  color: var(--azul);
+  margin-bottom: 6px;
+  font-size: 10pt;
+}
+.context-box p {
+  font-size: 9pt;
+  color: var(--tinta);
+  margin: 4px 0;
+}
+
+/* ─── PILL BADGES ─── */
+.mat-pill {
+  display: inline-block;
+  background: var(--verde-pale);
+  border: 1px solid var(--verde);
+  color: var(--verde-dark);
+  padding: 4px 10px;
+  font-size: 8.5pt;
+  margin: 2px;
+  border-radius: 12px;
+}
+.mat-pill .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--verde);
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 1 — PORTADA                                  -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page cover-page">
+<div class="cover-grid"></div>
+<div class="cover-accent-bar"></div>
+<div class="cover-body">
+
+  <div class="cover-top">
+    <div class="cover-eyebrow">CTE Sexta Sesión Ordinaria</div>
+    <div class="cover-pale-tag">Ciclo Escolar 2025–2026</div>
+    <div class="cover-title">Análisis Pedagógico<span class="accent"> Vida</span><br>Saludable · <span class="coral">1° Primaria</span></div>
+    <div class="cover-subtitle">Escuela: Ma. Guadalupe Castorena</div>
+    <div class="cover-desc">Reflexión crítica y propuestas contextualizadas para el desarrollo de aprendizajes asociados al Eje Articulador Vida Saludable en educación inicial de primaria, desde la práctica del Prof. Iván Herrera De Luna en un grupo con diversidad de niveles de aprendizaje en proceso de alfabetización.</div>
+    
+    <div class="cover-stats">
+      <div class="stat-item">
+        <span class="stat-num">23</span>
+        <span class="stat-label">Estudiantes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Líneas Formativas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">1°</span>
+        <span class="stat-label">Grado</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-institution">Escuela Primaria Ma. Guadalupe Castorena · Zacatecas, Zac.</div>
+    <div class="cover-date">
+      <div class="cover-year">2026</div>
+      <div class="cover-date-small">27 de Marzo · Año de Margarita Maza</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 2 — ÍNDICE Y INTRODUCCIÓN                   -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 01 · Introducción</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">·</div>
+    <div class="section-title">Índice del Documento</div>
+  </div>
+
+  <div style="padding-left:20px; font-size:9.5pt; line-height:1.8;">
+    <p><strong>1.</strong> Marco de referencia: CTE Marzo y la NEM</p>
+    <p><strong>2.</strong> Contexto de la escuela y del grupo</p>
+    <p><strong>3.</strong> Diagnóstico pedagógico: Realidad de primer grado</p>
+    <p><strong>4.</strong> Propósitos del Eje Articulador Vida Saludable</p>
+    <p><strong>5.</strong> Propuestas didácticas innovadoras</p>
+    <p><strong>6.</strong> Secuencia de actividades contextualizadas</p>
+    <p><strong>7.</strong> Evaluación formativa y evidencias de aprendizaje</p>
+    <p><strong>8.</strong> Vinculación con la comunidad y la familia</p>
+    <p><strong>9.</strong> Reflexión docente y mejora continua</p>
+    <p><strong>10.</strong> Compromiso de implementación</p>
+  </div>
+
+  <hr class="divider-heavy">
+
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <div class="section-title">Marco de Referencia: CTE Marzo en el contexto de la NEM</div>
+  </div>
+
+  <p style="margin-top:10px;">La Sexta Sesión Ordinaria del Consejo Técnico Escolar de marzo de 2026 convoca a las maestras y maestros a reflexionar en torno al <strong>Eje Articulador Vida Saludable</strong> del Plan de Estudio 2022, en un momento en que nuestro país enfrenta desafíos profundos en la salud física y mental de niñas, niños y adolescentes.</p>
+
+  <p>Este documento responde a esa convocatoria y se propone como un insumo reflexivo para el Prof. Iván Herrera De Luna y su equipo de trabajo en la escuela primaria Ma. Guadalupe Castorena. No pretende ser prescriptivo, sino <strong>propositivo y situado</strong>: analiza la realidad vivida en el aula de primer grado, donde la diversidad de ritmos de aprendizaje, los procesos iniciales de alfabetización y las condiciones del contexto local exigen estrategias pedagógicas pertinentes, creativas y con propósito transformador.</p>
+
+  <div class="pedagogical-box">
+    <div class="pedagogical-title">💚 Premisa Central</div>
+    <p>La salud no es solo ausencia de enfermedad. Es un derecho que se ejerce cuando niñas y niños aprenden a conocerse, respetarse, cuidar su cuerpo y el de otros, tomar decisiones informadas y vivir en comunidades que validan su existencia. En primer grado, eso comienza con gestos simples: compartir agua, reconocer cómo se sienten, jugar juntos sin violencia.</p>
+  </div>
+
+  <hr class="divider-heavy">
+
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <div class="section-title">Contexto de la Escuela y del Grupo</div>
+  </div>
+
+  <div class="context-box">
+    <div class="context-box-title">📍 Institución: Escuela Primaria Ma. Guadalupe Castorena</div>
+    <p><strong>Ubicación:</strong> Zacatecas, Zac. | <strong>Grado:</strong> 1° de Primaria | <strong>Docente:</strong> Prof. Iván Herrera De Luna</p>
+    <p><strong>Número de estudiantes:</strong> 23 | <strong>Edad promedio:</strong> 6 años | <strong>Ciclo escolar:</strong> 2025–2026</p>
+  </div>
+
+  <h3>Características del grupo</h3>
+  <ul>
+    <li><strong>Diversidad de ritmos de aprendizaje:</strong> El grupo presenta una amplia gama de niveles de desarrollo en lectura, escritura y pensamiento matemático. Hay estudiantes que inician conciencia fonológica, otros con hipótesis silábicas y algunos iniciando lectura convencional.</li>
+    <li><strong>Proceso de alfabetización en marcha:</strong> A mediados de marzo, la mayoría de niñas y niños aún se encuentra en fases iniciales de alfabetización. La escritura es principalmente pictográfica o presilábica.</li>
+    <li><strong>Desarrollo socioemocional variable:</strong> Mientras algunos estudiantes muestran autorregulación creciente, otros aún requieren apoyo constante en la gestión de emociones, compartición de espacios y resolución de conflictos.</li>
+    <li><strong>Acceso desigual a bienes y servicios:</strong> El contexto socioeconómico es heterogéneo. Algunas familias tienen acceso a servicios de salud, otras enfrentan barreras de acceso. Esto repercute en la nutrición, asistencia y disposición para el aprendizaje.</li>
+  </ul>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">01 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 3 — DIAGNÓSTICO PEDAGÓGICO                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 02 · Diagnóstico</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">3</div>
+    <div class="section-title">Diagnóstico Pedagógico: Realidades de Primer Grado</div>
+  </div>
+
+  <h3>Barreras de aprendizaje detectadas</h3>
+
+  <table class="diagnostic-table">
+    <thead>
+      <tr>
+        <th>Área</th>
+        <th>Observación</th>
+        <th>Impacto en Vida Saludable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Comunicación y Lenguaje</strong></td>
+        <td>Comprensión literal limitada. Dificultad para seguir instrucciones de 2–3 pasos. Vocabulario aún en construcción.</td>
+        <td>No pueden procesar o retener mensajes sobre higiene, nutrición o cuidado corporal en formato verbal.</td>
+      </tr>
+      <tr>
+        <td><strong>Autorregulación emocional</strong></td>
+        <td>Crisis frecuentes por frustración, deseo de poder o no obtener lo que desean. Bajo reconocimiento de propias emociones.</td>
+        <td>Dificultan espacios de convivencia segura. La salud mental no puede abordarse sin primero construir regulación emocional.</td>
+      </tr>
+      <tr>
+        <td><strong>Independencia en autocuidado</strong></td>
+        <td>Muchos aún requieren ayuda para ir al baño, lavarse manos, comer solos. Higiene personal inconsistente.</td>
+        <td>El aprendizaje formal de hábitos saludables choca con habilidades motrices y cognitivas aún en desarrollo.</td>
+      </tr>
+      <tr>
+        <td><strong>Relaciones interpersonales</strong></td>
+        <td>Juego paralelo más que cooperativo. Conflictos frecuentes por turnos, materiales. Poca empatía.</td>
+        <td>La salud colectiva requiere de vínculos respetuosos y solidarios. Esto debe ser construido desde el trato cotidiano.</td>
+      </tr>
+      <tr>
+        <td><strong>Conocimiento del propio cuerpo</strong></td>
+        <td>Reconocimiento incompleto de partes del cuerpo. Confusión sobre funciones de órganos.</td>
+        <td>No pueden cuidar lo que no conocen. El aprendizaje debe ser lúdico, corporal, vivencial.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <h3>Factores contextuales que potencian o limitan Vida Saludable</h3>
+
+  <div class="info-grid-2">
+    <div class="info-cell verde-top">
+      <div class="info-cell-title">✅ Fortalezas observadas</div>
+      <ul>
+        <li>Curiosidad natural de niñas y niños sobre el mundo</li>
+        <li>Disposición para actividades lúdicas y corporales</li>
+        <li>Momentos de empatía espontánea entre pares</li>
+        <li>Entusiasmo ante nuevas experiencias</li>
+        <li>Familias que validan la educación formal</li>
+      </ul>
+    </div>
+    <div class="info-cell coral-pale" style="border-top:3px solid var(--coral);">
+      <div class="info-cell-title">⚠️ Desafíos a atender</div>
+      <ul>
+        <li>Acceso inconsistente a agua potable en algunos hogares</li>
+        <li>Nutrición deficiente en estudiantes con vulnerabilidad económica</li>
+        <li>Falta de espacios seguros de juego al aire libre en el barrio</li>
+        <li>Modelos familiares con prácticas de violencia normalizada</li>
+        <li>Poco conocimiento de padres/madres sobre crianza respetuosa</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider-heavy">
+
+  <div class="section-head">
+    <div class="section-num">4</div>
+    <div class="section-title">Propósitos del Eje Articulador Vida Saludable en 1° Grado</div>
+  </div>
+
+  <div class="pedagogical-box">
+    <div class="pedagogical-title">🎯 Propósitos a desarrollar (situados en este grupo)</div>
+    
+    <p><strong>1. Alimentación Saludable:</strong> Que niñas y niños reconozcan y disfruten de alimentos disponibles en su entorno, comprendan cómo el cuerpo los usa para crecer y jugar, y desarrollen preferencias hacia opciones nutritivas simples.</p>
+
+    <p><strong>2. Prevención de enfermedades, accidentes y adicciones:</strong> Que identifiquen hábitos de higiene en contextos reales (baño, cepillado, lavado de manos) y comprendan por qué cuidan el cuerpo. A esta edad, aún no es prevención de drogas, pero sí es educación sobre el cuerpo como algo valioso.</p>
+
+    <p><strong>3. Educación Integral en Sexualidad:</strong> Que conozcan y validen las partes de su cuerpo con lenguaje correcto, respeten los límites corporales propios y ajenos, y vivan en un ambiente donde el cuerpo se trata con dignidad. En primer grado, esto es especialmente preventivo de abuso.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">02 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 4 — PROPUESTAS INNOVADORAS                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 03 · Propuestas Innovadoras</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">5</div>
+    <div class="section-title">Propuestas Didácticas Innovadoras y Contextualizadas</div>
+  </div>
+
+  <h3>Principios pedagógicos para abordar Vida Saludable en primer grado</h3>
+
+  <p>No podemos enseñar salud a través de carteles o explicaciones. Debemos <strong>construir salud en cada momento del día</strong>. Aquí hay cuatro enfoques:</p>
+
+  <div class="act-card">
+    <div class="act-label">Enfoque 1 — Lo vivencial como base</div>
+    <div class="act-title">El cuerpo aprende haciendo, no solo escuchando</div>
+    <div class="act-body" style="margin-top:6px;">
+      <p>Propuesta: Antes de hablar de lavado de manos, hacemos una estación de lavado en el aula. Observamos juntos qué pasa si nos ensuciamos y no nos lavamos. ¿Huele? ¿Se siente diferente? Permitimos que el descubrimiento sensorial preceda a la explicación.</p>
+      <p style="margin-top:6px;">En primer grado, el aprendizaje es principalmente corporal. Si queremos que cuiden su cuerpo, debe sentirse valioso. Si queremos nutrición saludable, deben probar, no solo entender.</p>
+    </div>
+  </div>
+
+  <div class="act-card">
+    <div class="act-label">Enfoque 2 — Narrativas contextuales</div>
+    <div class="act-title">Historias con personajes de la comunidad</div>
+    <div class="act-body" style="margin-top:6px;">
+      <p>Propuesta: En lugar de un personaje abstracto, usamos figuras reales: la abuela que cultiva en la huerta, el panadero del barrio, la enfermera de la clínica. Las historias son sobre ellos, en el lenguaje local.</p>
+      <p style="margin-top:6px;">Ejemplo narrativo: <em>"Doña Rosa cultiva verduras en su traspatio. Sus tomates son de color rojo brillante. ¿Qué comió la planta para que el tomate sea tan rojo? Agua. Tierra. Sol. Cuando Rosa come su tomate, su cuerpo dice: 'Gracias, Rosa. Con esto puedo jugar, correr, crecer.'"</em></p>
+    </div>
+  </div>
+
+  <div class="act-card">
+    <div class="act-label">Enfoque 3 — Integración transversal</div>
+    <div class="act-title">Vida Saludable en cada Fase y Disciplina</div>
+    <div class="act-body" style="margin-top:6px;">
+      <p>No es un tema aislado. En <strong>Lenguaje</strong>: escribimos instrucciones de higiene con dibujos. En <strong>Matemáticas</strong>: contamos frutas en la canasta, comparamos tamaños. En <strong>Exploración del Entorno</strong>: visitamos la huerta, hablamos del ciclo del agua.</p>
+      <p style="margin-top:6px;">La vida saludable es la trama de cada día, no un contenido externo.</p>
+    </div>
+  </div>
+
+  <div class="act-card">
+    <div class="act-label">Enfoque 4 — Reconocimiento de emociones como salud mental</div>
+    <div class="act-title">Nombrar lo que se siente es comenzar a cuidar</div>
+    <div class="act-body" style="margin-top:6px;">
+      <p>Propuesta: Cada mañana, un momento de <strong>emociómetro</strong>: niñas y niños muestran o dicen cómo se sienten. No juzgamos. Validamos. "Hoy Julián está con rabia porque no quiso venir a la escuela. Eso está bien. ¿Qué podemos hacer para que se sienta mejor?"</p>
+      <p style="margin-top:6px;">La salud mental en primer grado no es diagnóstico, es reconocimiento y aceptación.</p>
+    </div>
+  </div>
+
+  <hr class="divider-heavy">
+
+  <h3>Campos de oportunidad para innovación</h3>
+
+  <p><strong>Huerta escolar:</strong> Si existe espacio, es el laboratorio viviente perfecto. Plantar, regar, cosechar, comer. Matemáticas, observación, paciencia, celebración de la vida.</p>
+
+  <p><strong>Alianzas con personal de salud:</strong> Invitar a la enfermera o nutricionista a conversar con los niños sobre el cuerpo. No en modo "enseña", sino en modo "descubrimiento juntos".</p>
+
+  <p><strong>Espacios de juego seguro:</strong> Negociar con dirección para que haya tiempo de juego libre bien acompañado. Es donde más aprenden los niños de esta edad sobre límites corporales, empatía y salud mental.</p>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">03 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 5 — SECUENCIA DE ACTIVIDADES               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 04 · Secuencia Didáctica</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">6</div>
+    <div class="section-title">Secuencia de Actividades Contextualizadas</div>
+  </div>
+
+  <h3>Proyecto: "Mi Cuerpo, Mi Casa Saludable" (2 semanas)</h3>
+
+  <p><strong>Narrativa envolvente:</strong> <em>Cada cuerpo es una casa con puertas, ventanas y habitantes que lo cuidan. Nosotros somos los guardianes de nuestra casa. ¿Qué entra? ¿Qué sale? ¿Quién la cuida?</em></p>
+
+  <div class="activity-sequence">
+
+    <div class="activity-step">
+      <div class="activity-step-title">📍 Actividad 1: Exploración sensorial del cuerpo</div>
+      <div class="activity-step-content">
+        <p><strong>Objetivo:</strong> Que niñas y niños reconozcan partes de su cuerpo con lenguaje correcto y celebren su existencia.</p>
+        <p><strong>Desarrollo:</strong> En círculo, colocamos música suave. El facilitador toca una parte del cuerpo (cabeza) y todos la repiten. "Cabeza. Brillante. Aquí pensamos." Continuamos: ojos (para ver), orejas (para escuchar), boca (para comer y hablar), corazón (late, nos mantiene vivos), manos (hacen cosas), pies (nos llevan).</p>
+        <p><strong>Cierre:</strong> Dibujan su cuerpo con papel grande y etiquetan partes con ayuda. Pueden usar palabras, dibujos o símbolos según su nivel de escritura.</p>
+      </div>
+      <div class="activity-step-time">⏱️ 25 minutos · Lunes, semana 1</div>
+    </div>
+
+    <div class="activity-step">
+      <div class="activity-step-title">🧼 Actividad 2: Investigación del lavado de manos</div>
+      <div class="activity-step-content">
+        <p><strong>Objetivo:</strong> Que comprendan POR QUÉ lavarse manos es salud, no una orden.</p>
+        <p><strong>Desarrollo:</strong> Preparamos dos platos: uno con harina, otro limpio. Tocamos ambos con las manos "sucias" (hemos jugado en el patio). ¿Qué vemos? ¿Dónde está la suciedad? Ahora nos lavamos con agua. ¿Qué cambió? Repetimos: "Nuestras manos cargan historias. Historias visibles (la tierra) e invisibles (los microbios que no vemos pero existen). Cuando las lavamos, dejamos ir esas historias."</p>
+        <p><strong>Cierre:</strong> Creamos un afiche: "Las manos limpias son guardianas de mi salud." Cada niño/a pinta sus manos sobre el papel. Cuelgan en el baño.</p>
+      </div>
+      <div class="activity-step-time">⏱️ 30 minutos · Martes, semana 1</div>
+    </div>
+
+    <div class="activity-step">
+      <div class="activity-step-title">🍎 Actividad 3: De la huerta a la boca — Ruta de la nutrición</div>
+      <div class="activity-step-content">
+        <p><strong>Objetivo:</strong> Conectar alimento del campo con el cuidado del cuerpo.</p>
+        <p><strong>Desarrollo:</strong> Si es posible, visita a la huerta escolar o a un huerto comunitario. Si no, trabajamos con imágenes o traemos una zanahoria/manzana real. Observamos: "¿De dónde vino? ¿Quién la plantó? ¿Qué comió ella para crecer?" Probamos. "Ahora entra a nuestro cuerpo. Va al estómago. Se convierte en fuerza para saltar, correr, pensar."</p>
+        <p><strong>Cierre:</strong> Creamos un pequeño herbario: pegamos hojas, flores o dibujos de alimentos. Escriben/dictan: "Este alimento me hace fuerte en..." (con apoyo del adulto para completar).</p>
+      </div>
+      <div class="activity-step-time">⏱️ 35 minutos · Miércoles, semana 1</div>
+    </div>
+
+    <div class="activity-step">
+      <div class="activity-step-title">💙 Actividad 4: Emociones en mi cuerpo</div>
+      <div class="activity-step-content">
+        <p><strong>Objetivo:</strong> Que asocien estados emocionales con sensaciones corporales.</p>
+        <p><strong>Desarrollo:</strong> Mostramos caras con diferentes emociones. Preguntamos: "Cuando estamos contentos, ¿dónde lo sentimos? ¿En el corazón? ¿En la boca?" Jugamos: el facilitador hace una cara triste, todos imitamos. "¿Qué pasa en mi cuerpo cuando estoy triste? ¿Mis hombros suben? ¿Mi boca baja?" No interpretamos las emociones como buenas o malas, sino como información que el cuerpo nos da.</p>
+        <p><strong>Cierre:</strong> Cada niño/a dibuja una emoción. Escriben o dictan: "Cuando estoy [emoción], mi cuerpo..."</p>
+      </div>
+      <div class="activity-step-time">⏱️ 20 minutos · Jueves, semana 1</div>
+    </div>
+
+    <div class="activity-step">
+      <div class="activity-step-title">🤝 Actividad 5: Límites corporales y respeto</div>
+      <div class="activity-step-content">
+        <p><strong>Objetivo:</strong> Que reconozcan que su cuerpo es suyo y que todos merecen respeto.</p>
+        <p><strong>Desarrollo:</strong> Juego de rol sencillo: "¿Quiero un abrazo?" / "Sí, me gustaría." vs. "¿Quiero un abrazo?" / "No, prefiero chocar manos." Ambas respuestas son válidas. Practicamos: "Mi cuerpo es MÍO. Puedo decir que sí o que no. Y respeto el sí y el no de mis compañeros."</p>
+        <p><strong>Cierre:</strong> Creamos una regla visual: silueta humana con una etiqueta: "Este cuerpo es especial. Se respeta."</p>
+      </div>
+      <div class="activity-step-time">⏱️ 25 minutos · Viernes, semana 1</div>
+    </div>
+
+    <div class="activity-step">
+      <div class="activity-step-title">🎉 Actividad 6: Celebración y consolidación</div>
+      <div class="activity-step-content">
+        <p><strong>Objetivo:</strong> Integrar aprendizajes en una celebración de salud y comunidad.</p>
+        <p><strong>Desarrollo:</strong> Organizamos una "Fiesta de la Salud Compartida." Cada familia trae un alimento saludable del campo (fruta, verdura). Juntos, preparamos una ensalada simple. Mientras comen, recordamos: "Nuestras manos limpias. Nuestro cuerpo que crece. Nuestras emociones que compartimos. Nuestro respeto mutuo."</p>
+        <p><strong>Cierre:</strong> Certificado lúdico: "Soy guardián/a de mi casa saludable." Cada niño/a recibe un diploma coloreado para llevar a casa.</p>
+      </div>
+      <div class="activity-step-time">⏱️ 45 minutos · Viernes, semana 2</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">04 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 6 — EVALUACIÓN FORMATIVA                   -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 05 · Evaluación</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">7</div>
+    <div class="section-title">Evaluación Formativa y Evidencias de Aprendizaje</div>
+  </div>
+
+  <h3>Instrumentos de evaluación sin calificación</h3>
+
+  <p style="margin-top:10px;">En primer grado, la evaluación es <strong>observación y registro</strong>. No calificamos. Recopilamos evidencias de cómo cada niño/a avanza en su comprensión y práctica de vida saludable.</p>
+
+  <table class="rubric-table">
+    <thead>
+      <tr>
+        <th>Indicador de Aprendizaje</th>
+        <th>Lo logra</th>
+        <th>En proceso</th>
+        <th>Inicio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Reconoce y nombra partes de su cuerpo con lenguaje correcto</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+      </tr>
+      <tr>
+        <td>Practica lavado de manos sin recordatorio frecuente</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+      </tr>
+      <tr>
+        <td>Prueba alimentos diversos sin rechazo automático</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+      </tr>
+      <tr>
+        <td>Identifica y nombra una emoción que siente</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+      </tr>
+      <tr>
+        <td>Respeta límites corporales propios y ajenos (pide consentimiento, respeta negativas)</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+      </tr>
+      <tr>
+        <td>Participa en actividades de cuidado colectivo (limpieza, orden, higiene del aula)</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+        <td class="check-cell">○</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <h3>Evidencias de aprendizaje (Productos)</h3>
+
+  <div class="info-grid-2">
+    <div class="info-cell verde-top">
+      <div class="info-cell-title">📋 Productos tangibles</div>
+      <ul>
+        <li><strong>Dibujo del cuerpo:</strong> Silueta con partes etiquetadas</li>
+        <li><strong>Afiche de manos:</strong> Manos pintadas en grupo con mensaje de salud</li>
+        <li><strong>Herbario:</strong> Hojas/dibujos de alimentos con escritura emergente</li>
+        <li><strong>Emocionomía:</strong> Dibujo de emociones y sensaciones corporales</li>
+        <li><strong>Diploma de guardián/a:</strong> Certificado coloreado</li>
+      </ul>
+    </div>
+    <div class="info-cell verde-top">
+      <div class="info-cell-title">👀 Observaciones del docente</div>
+      <ul>
+        <li>¿Quien se lava manos sin recordatorio? ¿Quién requiere aún apoyo?</li>
+        <li>¿Quién muestra rechazo sistemático a alimentos? ¿Hay miedo o sensibilidad?</li>
+        <li>¿Quién nombra emociones? ¿Quién aún no las identifica?</li>
+        <li>¿Quién respeta los límites de otros? ¿Hay agresividad o invasión frecuente?</li>
+        <li>¿Cómo es la participación en actividades de cuidado colectivo?</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider-heavy">
+
+  <h3>Retroalimentación a estudiantes y familias</h3>
+
+  <p><strong>A los estudiantes (lenguaje sencillo, afirmativo):</strong> "Vilma, hace dos días te vi lavando tus manos sin que nadie te lo pidiera. Tu cuerpo está aprendiendo a cuidarse. Eso es poder."</p>
+
+  <p><strong>A las familias (comunicado breve y esperanzador):</strong> "Este mes, hemos estado descubriendo cómo cuidar nuestros cuerpos. Miguel ha aprendido que su corazón late y que las manos limpias lo protegen. En casa, pueden preguntar: 'Migueli, ¿me muestras cómo lavas tus manos?'"</p>
+
+  <div class="pedagogical-box">
+    <div class="pedagogical-title">💡 Nota importante sobre evaluación</div>
+    <p>En primer grado, los hábitos de salud son aún frágiles. Lo que hoy practicó, mañana se olvida. No es regresión; es desarrollo típico. Celebramos cada práctica sin frustración por consistencia, porque la consistencia llegará en grados mayores, cuando el desarrollo neurológico lo permita.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">05 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 7 — VINCULACIÓN CON COMUNIDAD              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 06 · Comunidad</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">8</div>
+    <div class="section-title">Vinculación con Comunidad y Familia</div>
+  </div>
+
+  <p>La salud de los niños y niñas no se construye solo en la escuela. Las familias y el contexto comunitario son socios insustituibles. Aquí hay formas de involucrarlos:</p>
+
+  <h3>Involucramiento de padres y madres de familia</h3>
+
+  <div class="act-card">
+    <div class="act-label">Iniciativa 1 — Taller para familias: "Salud desde Casa"</div>
+    <div class="act-title">Encuentro dialogado sobre hábitos saludables</div>
+    <div class="act-body" style="margin-top:6px;">
+      <p><strong>Propósito:</strong> Compartir con las familias qué estamos haciendo en la escuela y cómo pueden reforzarlo en casa de forma natural, sin presión.</p>
+      <p style="margin-top:6px;"><strong>Actividades:</strong></p>
+      <ul style="font-size:9pt;margin-left:16px;">
+        <li>Demostración de lavado de manos con agua y tierra</li>
+        <li>Conversación: ¿Qué alimentos nutritivos cultivamos o comemos en casa?</li>
+        <li>Juego de roles sobre cómo reconocer y nombrar emociones con nuestros hijos/as</li>
+        <li>Distribución de un pequeño afiche para colgar en el hogar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="act-card">
+    <div class="act-label">Iniciativa 2 — Calendario de hábitos compartidos</div>
+    <div class="act-title">Rutina visible en casa y escuela</div>
+    <div class="act-body" style="margin-top:6px;">
+      <p>Se entrega un calendario simple (pueden pintarlo en familia) con iconos de hábitos saludables: lavarse manos, comer fruta, jugar, decir lo que sienten. Cada día, la familia marca con una estrella o punto. No es control, es visibilización gozosa de la práctica.</p>
+    </div>
+  </div>
+
+  <div class="act-card">
+    <div class="act-label">Iniciativa 3 — Red de huertos comunitarios</div>
+    <div class="act-title">Conexión escuela–barrio en torno a la alimentación</div>
+    <div class="act-body" style="margin-top:6px;">
+      <p>Si hay huertas familiares en el barrio, visitarlas con los niños acompañados por padres/madres. Recolectar, probar, reconocer. Esta actividad integra salud, comunidad y aprendizaje experiencial.</p>
+    </div>
+  </div>
+
+  <hr class="divider-heavy">
+
+  <h3>Alianzas con instituciones locales</h3>
+
+  <div class="info-grid-2">
+    <div class="info-cell verde-top">
+      <div class="info-cell-title">🏥 Centro de Salud / Clínica</div>
+      <ul>
+        <li>Invitación a enfermero/a para conversa informal con niños</li>
+        <li>Visita a la clínica (si es posible) para conocer</li>
+        <li>Acceso a servicios preventivos (vacunas, revisión nutricional)</li>
+        <li>Orientación a familias en riesgo</li>
+      </ul>
+    </div>
+    <div class="info-cell verde-top">
+      <div class="info-cell-title">🌿 Mercado local / Huerto comunitario</div>
+      <ul>
+        <li>Visita a productores locales</li>
+        <li>Conversación sobre temporada de alimentos</li>
+        <li>Compra comunitaria: niños eligen una verdura</li>
+        <li>Preparación conjunta en la escuela</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pedagogical-box">
+    <div class="pedagogical-title">🌍 Transversalidad con la Dimensión de Género</div>
+    <p>El contexto es el Año de Margarita Maza. La salud es también un derecho de género: enseñamos que todas las personas, independientemente de su género, merecen cuidar su cuerpo, decidir sobre él, estar libres de violencia. En primer grado, esto significa espacios seguros, lenguaje respetuoso, modelos de convivencia donde niños y niñas tienen igual derecho a expresar, jugar y ser protegidos.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">06 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 8 — REFLEXIÓN Y MEJORA CONTINUA            -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 07 · Reflexión Docente</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">9</div>
+    <div class="section-title">Reflexión Docente y Proceso de Mejora Continua</div>
+  </div>
+
+  <h3>Preguntas para la reflexión personal y colegiada</h3>
+
+  <div class="act-card dark-card">
+    <div class="act-label dark">Reflexión individual · Responda en silencio</div>
+    <div class="act-title light">¿Qué tensiones observo entre lo que sé que es salud y lo que la realidad de primer grado permite?</div>
+    <div class="act-body light" style="margin-top:8px;">
+      <div class="reflection-q"><div class="rq-num">01→</div><div class="rq-text">¿Hay estudiantes que no tienen acceso a agua limpia? ¿Cómo enseño higiene sin reproducir exclusión?</div></div>
+      <div class="reflection-q"><div class="rq-num">02→</div><div class="rq-text">¿He malinterpretado comportamientos agresivos o aislados como falta de disposición, cuando podrían ser resultado de trauma?</div></div>
+      <div class="reflection-q"><div class="rq-num">03→</div><div class="rq-text">¿Qué creencias tengo sobre salud que podrían estar limitando mi práctica? (Ej: "los niños de esta zona no van a cambiar...").</div></div>
+      <div class="reflection-q"><div class="rq-num">04→</div><div class="rq-text">¿Cómo cuido MI salud emocional? ¿Cómo modelo la regulación a mis estudiantes?</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3>Indicadores de mejora para el grupo</h3>
+
+  <table class="rubric-table">
+    <thead>
+      <tr>
+        <th>Área de mejora</th>
+        <th>Indicador actual (marzo)</th>
+        <th>Meta (junio)</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hábito de higiene</strong></td>
+        <td>40% lava manos autónomamente</td>
+        <td>70% lo hace sin recordatorio</td>
+        <td>Afiche en baño · Rutina visual · Refuerzo con familias</td>
+      </tr>
+      <tr>
+        <td><strong>Aceptación de alimentos diversos</strong></td>
+        <td>60% prueba nuevos alimentos</td>
+        <td>75% participa en actividades de alimentación</td>
+        <td>Huerta · Experiencias multisensoriales · Cocina juntos</td>
+      </tr>
+      <tr>
+        <td><strong>Autorregulación emocional</strong></td>
+        <td>30% nombra una emoción</td>
+        <td>50% identifica y expresa emociones básicas</td>
+        <td>Emociómetro diario · Espacio seguro · Modelado</td>
+      </tr>
+      <tr>
+        <td><strong>Respeto de límites corporales</strong></td>
+        <td>Conflictos frecuentes por invasión de espacio</td>
+        <td>Conflictos disminuyen 40%</td>
+        <td>Juegos de consentimiento · Reglas claras · Intervención respetuosa</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider-heavy">
+
+  <h3>Ajustes a futuro según avances observados</h3>
+
+  <p><strong>Si el grupo avanza rápidamente:</strong> Profundizamos en temas de salud reproductiva (lenguaje anatómico correcto, privacidad), resolución no violenta de conflictos, y reflexión sobre prácticas saludables en contexto cultural.</p>
+
+  <p><strong>Si hay estancamiento:</strong> Revisamos barreras: ¿Falta acceso a recursos? ¿Hay trauma no atendido? ¿Las familias están alineadas? ¿Necesitamos apoyo de USAER o trabajo psicosocial?</p>
+
+  <p><strong>Ajustes mensuales:</strong> Cada fin de mes, docente registra en su cuaderno: "¿Qué funcionó? ¿Qué no? ¿Qué cambio la próxima semana?" Esta práctica es investigación acción.</p>
+
+  <div class="pedagogical-box">
+    <div class="pedagogical-title">🔄 Ciclo continuo de reflexión</div>
+    <p><strong>Observar → Interpretar → Actuar → Registrar → Evaluar → Ajustar</strong></p>
+    <p>No es un ciclo que termina. Es una espiral donde cada mes subimos un paso. Los niños y niñas crecen. Sus necesidades evolucionan. Nuestra práctica también debe evolucionar.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">07 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 9 — RECURSOS Y MATERIALES                  -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 08 · Recursos</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">10</div>
+    <div class="section-title">Materiales y Recursos para la Implementación</div>
+  </div>
+
+  <h3>Materiales necesarios para las actividades</h3>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0;">
+    <span class="mat-pill"><span class="dot"></span>Papel grande / periódico</span>
+    <span class="mat-pill"><span class="dot"></span>Marcadores / crayones</span>
+    <span class="mat-pill"><span class="dot"></span>Alimentos frescos (frutas, verduras)</span>
+    <span class="mat-pill"><span class="dot"></span>Agua potable suficiente</span>
+    <span class="mat-pill"><span class="dot"></span>Jabón para manos</span>
+    <span class="mat-pill"><span class="dot"></span>Imágenes de emociones</span>
+    <span class="mat-pill"><span class="dot"></span>Espejos (seguros)</span>
+    <span class="mat-pill"><span class="dot"></span>Música suave (opcional)</span>
+    <span class="mat-pill"><span class="dot"></span>Hojas de papel bond</span>
+    <span class="mat-pill"><span class="dot"></span>Pegamento y tijeras</span>
+  </div>
+
+  <hr class="divider">
+
+  <h3>Recursos documentales recomendados</h3>
+
+  <ul>
+    <li><strong>Documento SEP (2025):</strong> "El Eje Articulador Vida Saludable en el Plan de Estudio 2022" — fundamental para alineación curricular.</li>
+    <li><strong>Cartilla CONAPO (2020):</strong> "Derechos Sexuales de Adolescentes y Jóvenes" — adaptable a lenguaje de primer grado.</li>
+    <li><strong>Infografía SEP (2024):</strong> "Creencias y Salud Sexual / Reproductiva" — para docentes reflexionar sobre sus propias creencias antes de enseñar.</li>
+    <li><strong>Guía Chihuahuense (2015):</strong> "Educación Integral en Sexualidad para fortalecer CTE" — herramientas para trabajo colegiado.</li>
+    <li><strong>OMS (2003):</strong> "Los determinantes sociales de la salud" — para entender contexto de barreras de acceso.</li>
+  </ul>
+
+  <hr class="divider-heavy">
+
+  <h3>Espacios o alianzas necesarias</h3>
+
+  <div class="info-grid-2">
+    <div class="info-cell">
+      <div class="info-cell-title">🏫 En la escuela</div>
+      <ul>
+        <li>Espacio para huerta o macetas</li>
+        <li>Acceso seguro a agua potable</li>
+        <li>Baño limpio con jabón (mantenimiento)</li>
+        <li>Área para juego libre seguro</li>
+        <li>Clase con suficiente luz natural</li>
+      </ul>
+    </div>
+    <div class="info-cell verde-top">
+      <div class="info-cell-title">🤝 En la comunidad</div>
+      <ul>
+        <li>Centro de salud para orientación</li>
+        <li>Mercado o productor local</li>
+        <li>Huerto comunitario (si existe)</li>
+        <li>Familias dispuestas a participar</li>
+        <li>Voluntarios o abuelos para historias</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria</span>
+    <span class="pf-page">08 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 10 — CIERRE REFLEXIVO Y COMPROMISO        -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Sección 09 · Cierre</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">·</div>
+    <div class="section-title">Reflexión Final y Carta de Compromiso</div>
+  </div>
+
+  <div class="closing-block">
+    <div class="closing-title">Palabras finales: Enseñar Vida Saludable es construir esperanza</div>
+    
+    <p>Enseñar a niñas y niños de seis años a cuidar su cuerpo, reconocer sus emociones y vivir en comunidad no es una tarea menor. Es, de hecho, una de las más políticas que hacemos como docentes. Porque en un mundo que los trata como objetos de consumo, la escuela dice: <strong>"Tu cuerpo es tuyo. Tu voz importa. Tu salud es un derecho."</strong></p>
+
+    <p>Sabemos que no lo lograremos perfecto. Sabemos que hay barreras estructurales: falta de agua, pobreza, violencia, sistemas de salud frágiles. Pero en esa brecha entre lo ideal y lo posible es donde ocurre la pedagogía de verdad. Donde un maestro, con recursos limitados pero convicción profunda, planta semillas de dignidad en sus estudiantes.</p>
+
+    <p>Este documento es una propuesta. Úsalo, critícalo, modifícalo según tu grupo. <strong>Lo importante no es que todo salga como está escrito, sino que cada día hagas una acción pequeña, consciente, en favor de la vida saludable de tus estudiantes.</strong></p>
+
+    <p style="margin-top: 14px; font-style: italic; font-size: 10pt; border-left: 3px solid var(--verde); padding-left: 12px;">
+      "Un maestro que mañana enseña higiene jugando con tierra y agua, que escucha la emoción de una niña cuando dice 'estoy asustada,' que planta una semilla con un niño y espera su crecimiento — ése ya transformó la vida de alguien."
+    </p>
+  </div>
+
+  <hr class="divider-heavy">
+
+  <div class="section-head" style="margin-top: 6px;">
+    <div class="section-num">✓</div>
+    <div class="section-title">Mi Compromiso: Propuesta de Implementación</div>
+  </div>
+
+  <p style="font-size: 9.5pt; margin-bottom: 12px;">Como docente del grupo de 1° primaria de Ma. Guadalupe Castorena, después de revisar este análisis, me comprometo a:</p>
+
+  <div style="border: 1.5px dashed var(--verde); padding: 14px 16px; margin: 12px 0; background: var(--verde-pale); border-radius: 2px;">
+    <div style="font-weight: 700; color: var(--verde-dark); margin-bottom: 8px; font-size: 10pt;">Mis tres acciones concretas para abril:</div>
+    <div style="border-bottom: 1px solid var(--verde); height: 24px; margin-bottom: 8px;"></div>
+    <div style="border-bottom: 1px solid var(--verde); height: 24px; margin-bottom: 8px;"></div>
+    <div style="border-bottom: 1px solid var(--verde); height: 24px; margin-bottom: 12px;"></div>
+    
+    <div style="font-weight: 700; color: var(--verde-dark); margin-top: 12px; margin-bottom: 6px; font-size: 10pt;">Barrera que anticipo y cómo la atenderé:</div>
+    <div style="border: 1.5px dashed var(--linea); padding: 8px 12px; min-height: 40px; background: var(--marfil-warm); border-radius: 2px;"></div>
+    
+    <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: flex-end;">
+      <div style="text-align:center; flex:1;">
+        <div style="border-bottom: 1.5px solid var(--tinta-med); height: 30px; margin-bottom: 6px;"></div>
+        <div style="font-family:'Fira Code',monospace; font-size: 7pt; color: var(--tinta-suave); letter-spacing: 0.08em; text-transform: uppercase;">Nombre docente</div>
+      </div>
+      <div style="text-align:center; flex:1; margin-left:20px;">
+        <div style="border-bottom: 1.5px solid var(--tinta-med); height: 30px; margin-bottom: 6px;"></div>
+        <div style="font-family:'Fira Code',monospace; font-size: 7pt; color: var(--tinta-suave); letter-spacing: 0.08em; text-transform: uppercase;">Fecha</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p style="font-size: 8.5pt; color: var(--tinta-suave); text-align: center; margin-top: 12px;">
+    Este documento fue elaborado en el marco de la Sexta Sesión Ordinaria del CTE, marzo 2026. Es un insumo vivo, sujeto a revisión y mejora según lo que la práctica docente nos enseñe mes a mes. Tu retroalimentación es valiosa. Comparte lo que funciona, lo que no, y cómo transformaste estas ideas para tu realidad.
+  </p>
+
+  <p style="font-size: 9pt; font-weight: 700; color: var(--verde-dark); text-align: center; margin-top: 12px; margin-bottom: 20px;">
+    ¡Por una escuela donde niñas y niños vivan saludables, respetados y felices!
+  </p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--linea);">
+    <div style="text-align:center;">
+      <div style="border-bottom: 1.5px solid var(--tinta-med); height: 30px;"></div>
+      <div style="font-family:'Fira Code',monospace; font-size: 6pt; color: var(--tinta-suave); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Prof. Iván Herrera De Luna</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="border-bottom: 1.5px solid var(--tinta-med); height: 30px;"></div>
+      <div style="font-family:'Fira Code',monospace; font-size: 6pt; color: var(--tinta-suave); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Dirección Escolar</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="border-bottom: 1.5px solid var(--tinta-med); height: 30px;"></div>
+      <div style="font-family:'Fira Code',monospace; font-size: 6pt; color: var(--tinta-suave); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Supervisión / ATP</div>
+    </div>
+  </div>
+
+  <div class="page-footer" style="margin-top: 14px;">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria · Escuela Ma. Guadalupe Castorena</span>
+    <span class="pf-page">09 / 10</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PÁGINA 11 — ANEXO: REFERENCIAS Y BIBLIOGRAFÍA    -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-header-band">
+    <div class="ph-left">Análisis Pedagógico CTE Marzo 2026</div>
+    <div class="ph-right">Anexo · Referencias</div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">·</div>
+    <div class="section-title">Referencias Bibliográficas y Recursos Digitales</div>
+  </div>
+
+  <h3>Documentos Fundacionales</h3>
+  <ul style="font-size: 9pt; line-height: 1.8;">
+    <li><strong>Secretaría de Educación Pública (2025).</strong> "El Eje Articulador Vida Saludable en el Plan de Estudio 2022." CDMX: SEP. — Marco conceptual y líneas formativas.</li>
+    <li><strong>Secretaría de Educación Pública (2022).</strong> "Plan de Estudio para la Educación Primaria." CDMX: SEP. — Currículo oficial.</li>
+    <li><strong>CONAPO (2020).</strong> "Cartilla de Derechos Sexuales de Adolescentes y Jóvenes." CDMX: Consejo Nacional de Población. — Base jurídica.</li>
+  </ul>
+
+  <h3>Materiales Pedagógicos (SEP, 2024)</h3>
+  <ul style="font-size: 9pt; line-height: 1.8;">
+    <li>"Creencias y Salud Sexual. Materiales de apoyo a la apropiación del Plan 2022. Primero de Secundaria" — estrategias adaptables a primaria.</li>
+    <li>"Creencias y Salud Reproductiva. Materiales de apoyo al Plan 2022. Primero de Secundaria" — enfoque interdisciplinario.</li>
+  </ul>
+
+  <h3>Guías para CTE</h3>
+  <ul style="font-size: 9pt; line-height: 1.8;">
+    <li><strong>Unidad para la Igualdad de Género — Instituto Chihuahuense de la Mujer (2015).</strong> "Guía para la Educación Integral en Sexualidad para fortalecer los Consejos Técnicos Escolares de Educación Básica." — Reflexión docente profunda.</li>
+  </ul>
+
+  <h3>Investigación Fundacional</h3>
+  <ul style="font-size: 9pt; line-height: 1.8;">
+    <li><strong>Organización Mundial de la Salud (2003).</strong> "Los determinantes sociales de la salud. Los hechos probados." Ginebra: OMS. — Comprensión estructural.</li>
+    <li><strong>Comisión Global de Política de Drogas (2019).</strong> "La clasificación de sustancias psicoactivas. Cuando se dejó atrás a la ciencia." — Desmitificación de adicciones.</li>
+  </ul>
+
+  <h3>Recursos en Línea</h3>
+  <ul style="font-size: 9pt; line-height: 1.8;">
+    <li><strong>Gobierno de México:</strong> https://vidasaludable.gob.mx/ — Portal oficial de vida saludable.</li>
+    <li><strong>Secretaría de las Mujeres:</strong> https://familiasysexualidades.inmujeres.gob.mx/ — Orientaciones para familias.</li>
+    <li><strong>Educación Multigrado SEP:</strong> https://educacionmultigrado.sep.gob.mx/ — Recursos para contextos multigrado.</li>
+    <li><strong>UNICEF (2024):</strong> "Manual de toma de decisiones" — Herramienta para autonomía en estudiantes.</li>
+    <li><strong>Proyecto Yo Decido (CONAPO, 2025):</strong> "Mi futuro personal y comunitario" — Enfoque de derechos.</li>
+  </ul>
+
+  <hr class="divider-heavy">
+
+  <h3>Notas finales sobre este documento</h3>
+
+  <p style="font-size: 9pt; color: var(--tinta-suave); font-style: italic;">Este análisis fue elaborado como respuesta reflexiva a las Orientaciones de la Sexta Sesión Ordinaria del CTE (27 de marzo de 2026), tomando en cuenta el contexto específico de la Escuela Primaria Ma. Guadalupe Castorena, el grupo de primer grado y las realidades de su docente, Prof. Iván Herrera De Luna. No pretende ser un documento cerrado, sino una invitación al diálogo colegiado, la investigación acción y la mejora continua. Está disponible para ser comentado, criticado y enriquecido por otros docentes, colegas y actores de la comunidad educativa.</p>
+
+  <p style="font-size: 9pt; color: var(--tinta-suave); margin-top: 8px;">Fue diseñado con lenguaje accesible, estructura visual clara y propuestas situadas, esperando servir como herramienta tanto para el trabajo individual del docente como para las sesiones subsecuentes del CTE.</p>
+
+  <div style="margin-top: 20px; padding: 12px; background: var(--verde-pale); border-left: 4px solid var(--verde); border-radius: 2px;">
+    <p style="font-size: 8.5pt; color: var(--verde-dark); font-weight: 700; margin-bottom: 4px;">✓ Documento completado</p>
+    <p style="font-size: 8.5pt; color: var(--tinta-suave);">Versión 1.0 — Marzo 2026 — Ciclo Escolar 2025–2026</p>
+  </div>
+
+  <div class="page-footer" style="margin-top: 16px;">
+    <span class="pf-name">Análisis Pedagógico · CTE Marzo 2026 · 1° Primaria · Escuela Ma. Guadalupe Castorena</span>
+    <span class="pf-page">10 / 10</span>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
